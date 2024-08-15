@@ -1,15 +1,21 @@
 "use client";
-import { useState } from "react";
-import { FaTwitter } from "react-icons/fa";
-import { FaFacebookF } from "react-icons/fa6";
+import { useState, useEffect, useRef } from "react";
+import {
+  FaTwitter,
+  FaFacebookF,
+  FaTelegramPlane,
+  FaAngleDown,
+  FaCaretDown,
+} from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
-import { FaTelegramPlane } from "react-icons/fa";
-import { FaAngleDown } from "react-icons/fa6";
 import Link from "next/link";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isCompanyOpen, setIsCompanyOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("usd");
+
+  const dropdownRef = useRef(null); // Reference for the dropdown
 
   const optionData = [
     { id: 1, name: "usd", url: "currency-USD" },
@@ -29,6 +35,20 @@ const Header = () => {
     setIsOpen(false);
   };
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <header>
       <div className="bg-[#3554D1] text-white flex justify-between items-center py-[1%] px-[2%] text-[0.75rem]">
@@ -37,9 +57,9 @@ const Header = () => {
         </p>
 
         <div className="flex items-center gap-5">
-          <div className="relative">
+          <div className="relative" ref={dropdownRef}>
             <div
-              className={`bg-transparent text-white  hover:bg-[#cecece] rounded-[8px] p-2 flex items-center justify-between w-fit cursor-pointer ${
+              className={`bg-transparent text-white hover:opacity-60 hover:bg-[#cecece] rounded-[8px] p-2 flex items-center justify-between w-fit cursor-pointer ${
                 isOpen ? "border-2 text-white" : ""
               }`}
               onClick={() => setIsOpen(!isOpen)}
@@ -48,11 +68,11 @@ const Header = () => {
               <FaAngleDown color="white" className="ml-2" />
             </div>
             {isOpen && (
-              <div className="absolute flex flex-col gap-3 text-left mt-1 bg-white text-black border border-[#3554D1] rounded-[10px] w-fit z-10">
+              <div className="absolute text-left mt-1 bg-white text-black text-[20px] border border-[#3554D1] rounded-[10px] w-[200px] z-10">
                 {optionData.map((data) => (
                   <div
                     key={data.id}
-                    className="px-5 py-2  hover:bg-gray-100 active:bg-gray-200 cursor-pointer"
+                    className="px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1] active:bg-gray-200 cursor-pointer"
                     onClick={() => handleSelect(data.name)}
                   >
                     {data.name.toUpperCase()}
@@ -70,7 +90,7 @@ const Header = () => {
       </div>
       <div className="flex justify-between items-center py-[1%] px-[2%] bg-[eef0fb]">
         <div className="flex items-center gap-20">
-          <h1 className="text-[40px] ">360Travels</h1>
+          <h1 className="text-[40px]">360Travels</h1>
           <div className="flex gap-5 text-[15px] text-[#051036]">
             <Link href={"/"} className="hover:text-[#0a5aca]">
               Hotels
@@ -87,9 +107,25 @@ const Header = () => {
             <Link href={"/"} className="hover:text-[#0a5aca]">
               Contact Us
             </Link>
-            <Link href={"/"} className="hover:text-[#0a5aca]">
-              Company
-            </Link>
+            <div
+              className="relative"
+              onMouseEnter={() => setIsCompanyOpen(true)}
+              onMouseLeave={() => setIsCompanyOpen(false)}
+            >
+              <p className="hover:text-[#0a5aca] cursor-pointer flex gap-2 items-center">
+                Company <FaCaretDown />
+              </p>
+              {isCompanyOpen && (
+                <div className="absolute mt-1 bg-white text-black p-[10%] border border-gray-300 rounded-[10px] w-[200px] z-10">
+                  <Link href="/about" className="block px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1]">
+                    About Us
+                  </Link>
+                  <Link href="/faq" className="block px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1]">
+                    FAQ
+                  </Link>
+                </div>
+              )}
+            </div>
           </div>
         </div>
         <div className="flex items-center gap-5">
