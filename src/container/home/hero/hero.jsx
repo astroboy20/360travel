@@ -30,7 +30,7 @@ const Hero = () => {
           <div className="flex gap-1 items-center">
             <Button
               onClick={() => handleSelected("hotel")}
-              className={`text-[16px] flex items-center gap-3  rounded-[10px] px-[25px] py-[25px] hover:bg-[#287dfa] hover:text-white ${
+              className={`text-[16px] flex items-center gap-2  rounded-[10px] px-[25px] py-[25px] hover:bg-[#287dfa] hover:text-white ${
                 selected === "hotel"
                   ? "border-0 bg-[#287dfa] text-white"
                   : "border-2 border-[#287dfa] text-[#287dfa] bg-[#e8f2ff] "
@@ -40,7 +40,7 @@ const Hero = () => {
             </Button>
             <Button
               onClick={() => handleSelected("flight")}
-              className={`text-[18px] flex items-center gap-3 rounded-[10px] px-[25px] py-[25px] hover:bg-[#287dfa] hover:text-white ${
+              className={`text-[18px] flex items-center gap-2 rounded-[10px] px-[25px] py-[25px] hover:bg-[#287dfa] hover:text-white ${
                 selected === "flight"
                   ? "border-0 bg-[#287dfa] text-white"
                   : "border-2 border-[#287dfa] text-[#287dfa] bg-[#e8f2ff] "
@@ -50,7 +50,7 @@ const Hero = () => {
             </Button>
             <Button
               onClick={() => handleSelected("tour")}
-              className={`text-[16px] flex items-center gap-3  rounded-[10px] px-[25px] py-[25px] hover:bg-[#287dfa] hover:text-white ${
+              className={`text-[16px] flex items-center gap-2  rounded-[10px] px-[25px] py-[25px] hover:bg-[#287dfa] hover:text-white ${
                 selected === "tour"
                   ? "border-0 bg-[#287dfa] text-white"
                   : "border-2  border-[#287dfa] text-[#287dfa] bg-[#e8f2ff] "
