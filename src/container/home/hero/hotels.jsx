@@ -8,9 +8,9 @@ import { Button } from "@/components/ui/button";
 const Hotels = () => {
   return (
     <div>
-      <div className="flex flex-col gap-4 w-fit">
+      <div className="flex flex-col gap-4">
         {/* Left Side */}
-        <div className="flex  gap-4 ">
+        <div className="flex gap-2 ">
           <div>
             <p className="text-[12px]">City Name</p>
             <div className="flex gap-2 border w-full items-center p-3 rounded-[13px]">
@@ -36,7 +36,7 @@ const Hotels = () => {
         </div>
 
         {/* Right Side */}
-        <div className="flex  gap-4 1/2">
+        <div className="flex gap-2 1/2">
         <div className="flex gap-2">
             <div className="w-1/2">
               <p className="text-[12px]">Checkin</p>

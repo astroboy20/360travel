@@ -60,7 +60,7 @@ const Hero = () => {
             </Button>
           </div>
           <div>
-            <Card className="shadow-[0_0_40px_0,rgba(82,85,90,0.1)] rounded-[13px] p-[5%]">
+            <Card className="shadow-[0_0_40px_0,rgba(82,85,90,0.1)] rounded-[13px] p-[3%] w-[600px]">
               {selected === "hotel" && <Hotels />}
               {selected === "flight" && <Flight />}
               {selected === "tour" && <Tour />}
