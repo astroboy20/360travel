@@ -72,7 +72,7 @@ const Hero = () => {
       </div>
       <div className="hidden lg:block mt-auto">
         {" "}
-        <Image src={"/images/hero.png"} width={500} height={400} />
+        <Image src={"/images/hero.png"} width={500} height={400} alt="hero-image"/>
       </div>
     </div>
   );

@@ -16,34 +16,38 @@ import Image from "next/image";
 const Footer = () => {
   return (
     <footer className="bg-[#13357B] px-[10%] text-white py-4">
-      <div className="grid grid-cols-1 lg:grid-cols-2 py-[5%]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-0 py-[5%]">
         <div className="flex flex-col gap-8">
-          <h1 className="text-[50px]">360Travels</h1>
-          <div className="flex gap-10">
+          <h1 className="text-[20px] lg:text-[50px]">360Travels</h1>
+          <div className="flex flex-col gap-5 lg:flex-row lg:gap-10">
             <div className="flex flex-col gap-2">
               <p className="text-[14px]">Toll Free Customer Care</p>
-              <p className="text-[18px]">+852-1264-5524</p>
+              <p className="text-[16px] lg:text-[18px]">+852-1264-5524</p>
             </div>
             <div className="flex flex-col gap-2">
               <p className="text-[14px]">Need live support?</p>
-              <p className="text-[18px]">support@360travel.net</p>
+              <p className="text-[16px] lg:text-[18px]">
+                support@360travel.net
+              </p>
             </div>
           </div>
           <div className="flex flex-col gap-3">
             <p>Your all-in-one travel app</p>
-            <div className="flex gap-3">
+            <div className="flex flex-col lg:flex-row gap-3">
               <div className="flex gap-3 w-fit rounded-[16px] px-10 py-3 items-center bg-[#ffffff1A]">
                 <GrApple size={"35px"} />
                 <p className="text-[15px]">
                   {" "}
-                  Soon on <br /> Apple <br /> Store
+                  Soon on <br className="hidden lg:block" /> Apple{" "}
+                  <br className="hidden lg:block" /> Store
                 </p>
               </div>
               <div className="flex gap-3 w-fit rounded-[16px] px-10 py-3 items-center bg-[#ffffff1A]">
                 {" "}
                 <BiLogoPlayStore size={"35px"} />
                 <p className="text-[15px]">
-                  Soon on <br /> Google <br /> Play
+                  Soon on <br className="hidden lg:block" /> Google{" "}
+                  <br className="hidden lg:block" /> Play
                 </p>
               </div>
             </div>
@@ -56,7 +60,7 @@ const Footer = () => {
               <AiFillInstagram size={"15px"} />
               <FaTelegramPlane size={"15px"} />
             </div>
-            <p className="text-[14px]">
+            <p className="text-[12px] lg:text-[14px]">
               {" "}
               © 2022-2024 360Travel All rights reserved.
             </p>
@@ -75,25 +79,25 @@ const Footer = () => {
                 Subscribe
               </Button>
             </div>
-            <p className="text-[#ffffff80] flex gap-2 items-center text-[14px]">
+            <p className="text-[#ffffff80] flex gap-2 items-center text-[12px] lg:text-[14px]">
               <IoLockClosedOutline /> Don't worry your information is safe with
               us Our Products Hotels
             </p>
           </div>
           <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
-            <div className="flex flex-col gap-3 text-[16px]">
+            <div className="flex flex-col gap-3 text-[14px] lg:text-[16px]">
               <p> Our Products</p>
               <p> Hotels</p>
               <p> Flights</p>
               <p> Tours</p>
             </div>
-            <div className="flex flex-col gap-3 text-[16px]">
+            <div className="flex flex-col gap-3 text-[14px] lg:text-[16px]">
               <p>About 360Travel</p>
               <p>About Us</p>
               <p>Contact Us</p>
               <p>FAQ</p>
             </div>
-            <div className="flex flex-col gap-3 text-[16px]">
+            <div className="flex flex-col gap-3 text-[14px] lg:text-[16px]">
               <p>Partner with 360Travel</p>
               <p>partner@360travel.net</p>
             </div>
