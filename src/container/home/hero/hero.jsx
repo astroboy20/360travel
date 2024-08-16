@@ -17,8 +17,8 @@ const Hero = () => {
   };
 
   return (
-    <div className="py-[2%] px-[6%] bg-[#eceffb] flex justify-between">
-      <div className="flex flex-col gap-10">
+    <div className="py-[2%] px-[6%] bg-[#eceffb] flex justify-between ">
+      <div className="flex flex-col gap-10 ">
         <div className="uppercase text-[50px] font-[800] flex flex-col">
           <span className="leading-[72.5px]">Unforgettable trips</span>
           <span className="leading-[25px] text-[#3563ed]">
@@ -68,7 +68,8 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <Image src={"/images/hero.png"} width={500} height={500} />
+      <div className="mt-auto">  <Image src={"/images/hero.png"} width={500} height={400} /></div>
+     
     </div>
   );
 };

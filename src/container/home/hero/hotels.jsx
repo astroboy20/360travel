@@ -4,48 +4,57 @@ import { IoManOutline } from "react-icons/io5";
 import { IoIosSearch } from "react-icons/io";
 import { SlArrowDown } from "react-icons/sl";
 import { Button } from "@/components/ui/button";
+
 const Hotels = () => {
   return (
     <div>
-      <div className="grid grid-cols-2 gap-4">
-        <span>
-          <p>City Name</p>
-          <div className="flex gap-2 border w-full items-center p-3 rounded-[10px]">
-            <CiLocationOn />
-            <input className="outline-none w-full" />
-            <span>
-              <SlArrowDown />
-            </span>
+      <div className="flex flex-col gap-4 w-fit">
+        {/* Left Side */}
+        <div className="flex  gap-4 ">
+          <div>
+            <p className="text-[12px]">City Name</p>
+            <div className="flex gap-2 border w-full items-center p-3 rounded-[13px]">
+              <CiLocationOn size={"30px"} color="#0f61f9" />
+              <input className="outline-none w-full" />
+              <span className="flex items-center justify-center rounded-full border border-black p-1">
+                <SlArrowDown size={"15px"} color="#000" />
+              </span>
+            </div>
           </div>
-        </span>
 
-        <span>
-          <p>Traveller</p>
-          <div className="flex gap-2 border w-full items-center p-3 rounded-[10px]">
-            <IoManOutline />
-            <input className="outline-none w-full" />
-            <span>
-              <SlArrowDown />
-            </span>
+          <div>
+            <p className="text-[12px]">Traveller</p>
+            <div className="flex gap-2 border w-full items-center p-3 rounded-[13px]">
+              <IoManOutline size={"30px"} color="#0f61f9" />
+              <input className="outline-none w-full" />
+              <span className="flex items-center justify-center rounded-full border border-black p-1">
+                <SlArrowDown size={"15px"} color="#000" />
+              </span>
+            </div>
           </div>
-        </span>
+         
+        </div>
 
-        <div className="flex gap-4 col-span-2 items-end">
-          <span>
-            <p>Checkin</p>
-            <input type="date" className="w-fit border p-3 rounded-[10px]" />
-          </span>
-          <span>
-            <p>Checkout</p>
-            <input type="date" className="w-fit border p-3 rounded-[10px]" />
-          </span>
-          <span>
-          <p></p>
-          <Button className="w-full px-[30px] py-[25px] flex items-center justify-center">
-            <IoIosSearch />
-            Find your Hotel
-          </Button>
-          </span>
+        {/* Right Side */}
+        <div className="flex  gap-4 1/2">
+        <div className="flex gap-2">
+            <div className="w-1/2">
+              <p className="text-[12px]">Checkin</p>
+              <input type="date" className="border w-full p-3 rounded-[13px]" />
+            </div>
+
+            <div className="w-1/2">
+              <p className="text-[12px]">Checkout</p>
+              <input type="date" className="border w-full p-3 rounded-[13px]" />
+            </div>
+          </div>
+
+          <div className="w-full mt-auto">
+            <Button className="w-full bg-[#0f61f9] text-white h-[50px] font-600 rounded-[13px] flex items-center justify-center">
+              <IoIosSearch />
+              Find your Hotel
+            </Button>
+          </div>
         </div>
       </div>
     </div>
