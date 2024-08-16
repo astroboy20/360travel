@@ -10,7 +10,7 @@ const Hotels = () => {
     <div>
       <div className="flex flex-col gap-4">
         {/* Left Side */}
-        <div className="flex gap-2 ">
+        <div className="flex flex-col lg:flex-row gap-2 ">
           <div>
             <p className="text-[12px]">City Name</p>
             <div className="flex gap-2 border w-full items-center p-3 rounded-[13px]">
@@ -32,18 +32,17 @@ const Hotels = () => {
               </span>
             </div>
           </div>
-         
         </div>
 
         {/* Right Side */}
-        <div className="flex gap-2 1/2">
-        <div className="flex gap-2">
-            <div className="w-1/2">
+        <div className="flex flex-col w-full lg:flex-row gap-2 lg:1/2">
+          <div className="flex flex-col lg:flex-row gap-2">
+            <div className="w-full lg:w-1/2">
               <p className="text-[12px]">Checkin</p>
               <input type="date" className="border w-full p-3 rounded-[13px]" />
             </div>
 
-            <div className="w-1/2">
+            <div className="w-full lg:w-1/2">
               <p className="text-[12px]">Checkout</p>
               <input type="date" className="border w-full p-3 rounded-[13px]" />
             </div>

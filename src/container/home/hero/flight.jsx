@@ -10,8 +10,8 @@ const Flight = () => {
   return (
     <main className="flex flex-col gap-3">
       <div className="flex justify-between items-center mb-4">
-        <div className="flex gap-5">
-          <div className="flex gap-2 items-center">
+        <div className="flex  gap-5">
+          <div className="flex  gap-2 items-center">
             <input type="radio" />
             <label className="text-[14px] font-bold">One-way</label>
           </div>
@@ -20,7 +20,7 @@ const Flight = () => {
             <label className="text-[14px] font-bold">Round trip</label>
           </div>
         </div>
-        <select className="border text-[14px] px-3 py-2 rounded-full">
+        <select className="border text-[14px] px-3 py-2 rounded-full w-full lg:w-auto">
           <option disabled hidden value="">
             Select flight type
           </option>

@@ -9,6 +9,8 @@ import {
 } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import Link from "next/link";
+import { HiOutlineUserCircle } from "react-icons/hi2";
+import { TbMenuDeep } from "react-icons/tb";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,9 +53,10 @@ const Header = () => {
 
   return (
     <header>
-      <div className="bg-[#3554D1] text-white flex justify-between items-center py-[1%] px-[2%] text-[0.75rem]">
-        <p className="flex gap-5">
-          +1234567890 <span>|</span> support@360travel.net
+      <div className="bg-[#3554D1] text-white flex justify-between items-center py-[1%] px-[2%] text-[12px] lg:text-[0.75rem] ">
+        <p className="flex gap-5 ">
+          <span className="hidden lg:block">+1234567890</span>{" "}
+          <span className="hidden lg:block">|</span> support@360travel.net
         </p>
 
         <div className="flex items-center gap-5">
@@ -81,17 +84,20 @@ const Header = () => {
               </div>
             )}
           </div>
-          <span>|</span>
-          <FaFacebookF size={"15px"} />
-          <FaTwitter size={"15px"} />
-          <AiFillInstagram size={"15px"} />
-          <FaTelegramPlane size={"15px"} />
+          <span className="hidden lg:block">|</span>
+          <div className="hidden lg:flex gap-3 items-center">
+            {" "}
+            <FaFacebookF size={"15px"} />
+            <FaTwitter size={"15px"} />
+            <AiFillInstagram size={"15px"} />
+            <FaTelegramPlane size={"15px"} />
+          </div>
         </div>
       </div>
       <div className="flex justify-between items-center py-[1%] px-[2%] bg-[eef0fb]">
         <div className="flex items-center gap-20">
-          <h1 className="text-[40px]">360Travels</h1>
-          <div className="flex gap-5 text-[15px] text-[#051036]">
+          <h1 className="text-[20px] lg:text-[40px]">360Travels</h1>
+          <div className=" hidden lg:flex gap-5 text-[15px] text-[#051036]">
             <Link href={"/"} className="hover:text-[#0a5aca]">
               Hotels
             </Link>
@@ -117,10 +123,16 @@ const Header = () => {
               </p>
               {isCompanyOpen && (
                 <div className="absolute mt-1 bg-white text-black p-[10%] border border-gray-300 rounded-[10px] w-[200px] z-10">
-                  <Link href="/about" className="block px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1]">
+                  <Link
+                    href="/about"
+                    className="block px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1]"
+                  >
                     About Us
                   </Link>
-                  <Link href="/faq" className="block px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1]">
+                  <Link
+                    href="/faq"
+                    className="block px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1]"
+                  >
                     FAQ
                   </Link>
                 </div>
@@ -128,7 +140,7 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div className="flex items-center gap-5">
+        <div className="hidden lg:flex items-center gap-5">
           <Link
             href={"/"}
             className="bg-[#0068ef] text-white rounded-[13px] px-[30px] py-[14px] text-[14px] hover:bg-[#3554d1] hover:transition-all"
@@ -141,6 +153,10 @@ const Header = () => {
           >
             Login
           </Link>
+        </div>
+        <div className="flex gap-3 items-center lg:hidden">
+        <HiOutlineUserCircle size={"20px"}/>
+        <TbMenuDeep size={"20px"}/>
         </div>
       </div>
     </header>
