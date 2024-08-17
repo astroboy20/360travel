@@ -18,7 +18,7 @@ const Hero = () => {
 
   return (
     <div className="py-[2%] px-[6%] bg-[#eceffb] flex justify-between w-full">
-      <div className="flex flex-col gap-10 ">
+      <div className="flex flex-col gap-10 w-full lg:w-auto">
         <div className="uppercase text-[30px] lg:text-[50px] font-[800] flex flex-col">
           <span className="leading-[43.5px] lg:leading-[72.5px]">
             Unforgettable trips
@@ -61,7 +61,7 @@ const Hero = () => {
               <LiaToolboxSolid size={"20px"} /> Tours
             </Button>
           </div>
-          <div>
+          <div className="">
             <Card className="shadow-[0_0_40px_0,rgba(82,85,90,0.1)] rounded-[13px] lg:p-[3%]  p-[5%] w-full lg:w-[600px]">
               {selected === "hotel" && <Hotels />}
               {selected === "flight" && <Flight />}
