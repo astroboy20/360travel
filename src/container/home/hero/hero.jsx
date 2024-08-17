@@ -17,7 +17,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="py-[2%] px-[6%] bg-[#eceffb] flex justify-between w-full">
+    <div className="py-[2%] px-[5%] lg:px-[6%] bg-[#eceffb] flex justify-between w-full">
       <div className="flex flex-col gap-10 w-full lg:w-auto">
         <div className="uppercase text-[30px] lg:text-[50px] font-[800] flex flex-col">
           <span className="leading-[43.5px] lg:leading-[72.5px]">

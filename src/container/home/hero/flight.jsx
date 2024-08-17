@@ -13,6 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
+import { DatePicker } from "@/components/date-picker";
 
 const Flight = () => {
   return (
@@ -108,7 +109,8 @@ const Flight = () => {
         <div className="flex flex-col lg:flex-row gap-2">
           <span className="w-full lg:w-1/2">
             <label className="text-[12px]">Departure Date</label>
-            <Input type="date" className="w-full border rounded-[13px] p-3" />
+            {/* <Input type="date" className="w-full border rounded-[13px] p-3" /> */}
+            <DatePicker/>
           </span>
 
           <div className="mt-auto w-full lg:w-1/2">

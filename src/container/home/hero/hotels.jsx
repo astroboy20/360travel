@@ -4,6 +4,7 @@ import { IoManOutline } from "react-icons/io5";
 import { IoIosSearch } from "react-icons/io";
 import { SlArrowDown } from "react-icons/sl";
 import { Button } from "@/components/ui/button";
+import { DatePicker } from "@/components/date-picker";
 
 const Hotels = () => {
   return (
@@ -39,12 +40,14 @@ const Hotels = () => {
           <div className="flex flex-col lg:flex-row gap-2">
             <div className="w-full lg:w-1/2">
               <p className="text-[12px]">Checkin</p>
-              <input type="date" className="border w-full p-3 rounded-[13px]" />
+              {/* <input type="date" className="border w-full p-3 rounded-[13px]" /> */}
+              <DatePicker/>
             </div>
 
             <div className="w-full lg:w-1/2">
               <p className="text-[12px]">Checkout</p>
-              <input type="date" className="border w-full p-3 rounded-[13px]" />
+              {/* <input type="date" className="border w-full p-3 rounded-[13px]" /> */}
+              <DatePicker/>
             </div>
           </div>
 
