@@ -71,7 +71,7 @@ const Header = () => {
               <FaAngleDown color="white" className="ml-2" />
             </div>
             {isOpen && (
-              <div className="absolute text-left mt-1 bg-white text-black text-[20px] border border-[#3554D1] rounded-[10px] w-[200px] z-10">
+              <div className="absolute text-left right-2 lg:right-0 mt-1 bg-white text-black text-[16px] lg:text-[20px] border border-[#3554D1] rounded-[10px] w-fit lg:w-[200px] z-10">
                 {optionData.map((data) => (
                   <div
                     key={data.id}

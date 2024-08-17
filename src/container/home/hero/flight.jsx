@@ -5,6 +5,14 @@ import { FiUser } from "react-icons/fi";
 import { SlArrowDown } from "react-icons/sl";
 import { Button } from "@/components/ui/button";
 import { IoIosSearch } from "react-icons/io";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
 
 const Flight = () => {
   return (
@@ -20,7 +28,20 @@ const Flight = () => {
             <label className="text-[14px] font-bold">Round trip</label>
           </div>
         </div>
-        <select className="border text-[14px] px-3 py-2 rounded-full w-full lg:w-fit">
+
+        <Select className=" outline-none">
+          <SelectTrigger className="w-full lg:w-fit rounded-full text-[12px] ring-0 focus:ring-0 focus:outline-none px-3 py-2 ">
+            <SelectValue placeholder="Select flight type" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="Economy">Economy</SelectItem>
+            <SelectItem value="Economy Premium">Economy Premium</SelectItem>
+            <SelectItem value="Business">Business</SelectItem>
+            <SelectItem value="First">First</SelectItem>
+          </SelectContent>
+        </Select>
+
+        {/* <select className="border text-[14px] px-3 py-2 rounded-full w-full lg:w-fit">
           <option disabled hidden value="">
             Select flight type
           </option>
@@ -28,7 +49,7 @@ const Flight = () => {
           <option>Economy Premium</option>
           <option>Business</option>
           <option>First</option>
-        </select>
+        </select> */}
       </div>
 
       <div>
@@ -87,7 +108,7 @@ const Flight = () => {
         <div className="flex flex-col lg:flex-row gap-2">
           <span className="w-full lg:w-1/2">
             <label className="text-[12px]">Departure Date</label>
-            <input type="date" className="w-full border rounded-[13px] p-3" />
+            <Input type="date" className="w-full border rounded-[13px] p-3" />
           </span>
 
           <div className="mt-auto w-full lg:w-1/2">
