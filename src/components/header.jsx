@@ -16,8 +16,11 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isCompanyOpen, setIsCompanyOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("usd");
+  const [isHeaderFixed, setIsHeaderFixed] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
 
-  const dropdownRef = useRef(null); // Reference for the dropdown
+  const dropdownRef = useRef(null);
+  const infoRef = useRef(null); // Reference for the first section
 
   const optionData = [
     { id: 1, name: "usd", url: "currency-USD" },
@@ -37,7 +40,6 @@ const Header = () => {
     setIsOpen(false);
   };
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -45,16 +47,35 @@ const Header = () => {
       }
     };
 
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const infoHeight = infoRef.current
+        ? infoRef.current.getBoundingClientRect().height
+        : 0;
+
+      setIsHeaderFixed(scrollPosition > infoHeight);
+    };
+
     document.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("scroll", handleScroll);
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
+  const handleShowMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
   return (
     <header>
-      <div className="bg-[#3554D1] text-white flex justify-between items-center py-[1%] px-[2%] text-[12px] lg:text-[0.75rem] ">
-        <p className="flex gap-5 ">
+      <div
+        ref={infoRef} // Reference for the first section
+        className="bg-[#3554D1] text-white flex justify-between items-center py-[1%] px-[2%] text-[12px] lg:text-[0.75rem]"
+      >
+        <p className="flex gap-5">
           <span className="hidden lg:block">+1234567890</span>{" "}
           <span className="hidden lg:block">|</span> support@360travel.net
         </p>
@@ -86,7 +107,6 @@ const Header = () => {
           </div>
           <span className="hidden lg:block">|</span>
           <div className="hidden lg:flex gap-3 items-center">
-            {" "}
             <FaFacebookF size={"15px"} />
             <FaTwitter size={"15px"} />
             <AiFillInstagram size={"15px"} />
@@ -94,10 +114,14 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-between items-center py-[1%] px-[2%] bg-[eef0fb]">
+      <div
+        className={`flex justify-between items-center py-[1%] px-[2%] bg-[eef0fb] ${
+          isHeaderFixed ? "fixed top-0 left-0 w-full z-50 shadow-lg bg-white" : ""
+        }`}
+      >
         <div className="flex items-center gap-20">
           <h1 className="text-[20px] lg:text-[40px]">360Travels</h1>
-          <div className=" hidden lg:flex gap-5 text-[15px] text-[#051036]">
+          <div className="hidden lg:flex gap-5 text-[15px] text-[#051036]">
             <Link href={"/"} className="hover:text-[#0a5aca]">
               Hotels
             </Link>
@@ -155,12 +179,70 @@ const Header = () => {
           </Link>
         </div>
         <div className="flex gap-3 items-center lg:hidden">
-        <HiOutlineUserCircle size={"20px"}/>
-        <TbMenuDeep size={"20px"}/>
+          <HiOutlineUserCircle size={"20px"} />
+          <TbMenuDeep size={"20px"} onClick={handleShowMenu} />
         </div>
       </div>
+      {showMenu && (
+        <div className="lg:hidden bg-white text-black p-5 border-t border-gray-200">
+          <Link
+            href={"/"}
+            className="block px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1]"
+          >
+            Hotels
+          </Link>
+          <Link
+            href={"/"}
+            className="block px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1]"
+          >
+            Flights
+          </Link>
+          <Link
+            href={"/"}
+            className="block px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1]"
+          >
+            Tours
+          </Link>
+          <Link
+            href={"/"}
+            className="block px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1]"
+          >
+            Blog
+          </Link>
+          <Link
+            href={"/"}
+            className="block px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1]"
+          >
+            Contact Us
+          </Link>
+          <div className="relative">
+            <p
+              className="px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1] cursor-pointer flex items-center"
+              onClick={() => setIsCompanyOpen(!isCompanyOpen)}
+            >
+              Company <FaCaretDown />
+            </p>
+            {isCompanyOpen && (
+              <div className="absolute mt-1 bg-white text-black p-5 border border-gray-300 rounded-[10px] w-[200px] z-10">
+                <Link
+                  href="/about"
+                  className="block px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1]"
+                >
+                  About Us
+                </Link>
+                <Link
+                  href="/faq"
+                  className="block px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1]"
+                >
+                  FAQ
+                </Link>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </header>
   );
 };
 
-export { Header };
+export {Header};
