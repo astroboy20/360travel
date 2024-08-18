@@ -73,7 +73,7 @@ const Header = () => {
     <header>
       <div
         ref={infoRef} // Reference for the first section
-        className="bg-[#3554D1] text-white flex justify-between items-center py-[1%] px-[2%] text-[12px] lg:text-[0.75rem]"
+        className="bg-[#3554D1] text-white flex justify-between items-center py-1 px-[2%] text-[12px] lg:text-[0.75rem]"
       >
         <p className="flex gap-5">
           <span className="hidden lg:block">+1234567890</span>{" "}
@@ -115,134 +115,146 @@ const Header = () => {
         </div>
       </div>
       <div
-        className={`flex justify-between items-center py-[1%] px-[2%] bg-[eef0fb] ${
-          isHeaderFixed ? "fixed top-0 left-0 w-full z-50 shadow-lg bg-white" : ""
+        className={`flex justify-between items-center py-[3%] lg:py-[1%] px-[2%] ${
+          showMenu ? "bg-white" : "bg-[#eef0fb]"
+        }  ${
+          isHeaderFixed
+            ? "fixed top-0 left-0 w-full z-50 shadow-lg bg-white"
+            : ""
         }`}
       >
-        <div className="flex items-center gap-20">
-          <h1 className="text-[20px] lg:text-[40px]">360Travels</h1>
-          <div className="hidden lg:flex gap-5 text-[15px] text-[#051036]">
-            <Link href={"/"} className="hover:text-[#0a5aca]">
-              Hotels
-            </Link>
-            <Link href={"/"} className="hover:text-[#0a5aca]">
-              Flights
-            </Link>
-            <Link href={"/"} className="hover:text-[#0a5aca]">
-              Tours
-            </Link>
-            <Link href={"/"} className="hover:text-[#0a5aca]">
-              Blog
-            </Link>
-            <Link href={"/"} className="hover:text-[#0a5aca]">
-              Contact Us
-            </Link>
-            <div
-              className="relative"
-              onMouseEnter={() => setIsCompanyOpen(true)}
-              onMouseLeave={() => setIsCompanyOpen(false)}
-            >
-              <p className="hover:text-[#0a5aca] cursor-pointer flex gap-2 items-center">
-                Company <FaCaretDown />
-              </p>
-              {isCompanyOpen && (
-                <div className="absolute mt-1 bg-white text-black p-[10%] border border-gray-300 rounded-[10px] w-[200px] z-10">
-                  <Link
-                    href="/about"
-                    className="block px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1]"
-                  >
-                    About Us
-                  </Link>
-                  <Link
-                    href="/faq"
-                    className="block px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1]"
-                  >
-                    FAQ
-                  </Link>
+        <div className="flex flex-col w-full  items-center gap-10">
+          <div className="w-full flex justify-between items-center ">
+            <div className="flex gap-8 items-center">
+              <h1 className="text-[20px] lg:text-[40px]">360Travels</h1>
+              <div className="hidden lg:flex gap-5 text-[15px] text-[#051036]">
+                <Link href={"/"} className="hover:text-[#0a5aca]">
+                  Hotels
+                </Link>
+                <Link href={"/"} className="hover:text-[#0a5aca]">
+                  Flights
+                </Link>
+                <Link href={"/"} className="hover:text-[#0a5aca]">
+                  Tours
+                </Link>
+                <Link href={"/"} className="hover:text-[#0a5aca]">
+                  Blog
+                </Link>
+                <Link href={"/"} className="hover:text-[#0a5aca]">
+                  Contact Us
+                </Link>
+
+                <div
+                  className="relative"
+                  onMouseEnter={() => setIsCompanyOpen(true)}
+                  onMouseLeave={() => setIsCompanyOpen(false)}
+                >
+                  <p className="hover:text-[#0a5aca] cursor-pointer flex gap-2 items-center">
+                    Company <FaCaretDown />
+                  </p>
+                  {isCompanyOpen && (
+                    <div className="absolute mt-1 bg-white text-black p-[10%] border border-gray-300 rounded-[10px] w-[200px] z-10">
+                      <Link
+                        href="/about"
+                        className="block px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1]"
+                      >
+                        About Us
+                      </Link>
+                      <Link
+                        href="/faq"
+                        className="block px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1]"
+                      >
+                        FAQ
+                      </Link>
+                    </div>
+                  )}
                 </div>
-              )}
+              </div>
+            </div>
+
+            <div className="hidden lg:flex items-center gap-5">
+              <Link
+                href={"/signin"}
+                className="bg-[#0068ef] text-white rounded-[13px] px-[30px] py-[14px] text-[14px] hover:bg-[#3554d1] hover:transition-all"
+              >
+                Register
+              </Link>
+              <Link
+                href={"/login"}
+                className="border border-[#0068ef] text-[#0068ef] rounded-[13px] px-[30px] py-[14px] text-[14px] hover:bg-[#3554d1] hover:text-white hover:transition-all"
+              >
+                Login
+              </Link>
+            </div>
+
+            <div className="flex gap-3 items-center lg:hidden">
+              <HiOutlineUserCircle size={"20px"} />
+              <TbMenuDeep size={"20px"} onClick={handleShowMenu} />
             </div>
           </div>
-        </div>
-        <div className="hidden lg:flex items-center gap-5">
-          <Link
-            href={"/"}
-            className="bg-[#0068ef] text-white rounded-[13px] px-[30px] py-[14px] text-[14px] hover:bg-[#3554d1] hover:transition-all"
-          >
-            Register
-          </Link>
-          <Link
-            href={"/"}
-            className="border border-[#0068ef] text-[#0068ef] rounded-[13px] px-[30px] py-[14px] text-[14px] hover:bg-[#3554d1] hover:text-white hover:transition-all"
-          >
-            Login
-          </Link>
-        </div>
-        <div className="flex gap-3 items-center lg:hidden">
-          <HiOutlineUserCircle size={"20px"} />
-          <TbMenuDeep size={"20px"} onClick={handleShowMenu} />
+
+          {showMenu && (
+            <div className="lg:hidden flex flex-col gap-5 left-0 w-full h-[100dvh] bg-white text-black  ">
+              <Link
+                href={"/"}
+                className="  hover:bg-gray-100 hover:text-[#3554d1]"
+              >
+                Hotels
+              </Link>
+              <Link
+                href={"/"}
+                className="hover:bg-gray-100 hover:text-[#3554d1]"
+              >
+                Flights
+              </Link>
+              <Link
+                href={"/"}
+                className="hover:bg-gray-100 hover:text-[#3554d1]"
+              >
+                Tours
+              </Link>
+              <Link
+                href={"/"}
+                className=" hover:bg-gray-100 hover:text-[#3554d1]"
+              >
+                Blog
+              </Link>
+              <Link
+                href={"/"}
+                className=" hover:bg-gray-100 hover:text-[#3554d1]"
+              >
+                Contact Us
+              </Link>
+              <div className="relative w-full">
+                <p
+                  className=" hover:bg-gray-100 hover:text-[#3554d1] cursor-pointer flex justify-between items-center"
+                  onClick={() => setIsCompanyOpen(!isCompanyOpen)}
+                >
+                  Company <FaCaretDown />
+                </p>
+                {isCompanyOpen && (
+                  <div className="absolute flex flex-col gap-5 left-0  mt-1 bg-white text-black p-5 border border-gray-300 rounded-[10px] w-[200px] z-10">
+                    <Link
+                      href="/about"
+                      className=" hover:bg-gray-100 hover:text-[#3554d1]"
+                    >
+                      About Us
+                    </Link>
+                    <Link
+                      href="/faq"
+                      className=" hover:bg-gray-100 hover:text-[#3554d1]"
+                    >
+                      FAQ
+                    </Link>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       </div>
-      {showMenu && (
-        <div className="lg:hidden bg-white text-black p-5 border-t border-gray-200">
-          <Link
-            href={"/"}
-            className="block px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1]"
-          >
-            Hotels
-          </Link>
-          <Link
-            href={"/"}
-            className="block px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1]"
-          >
-            Flights
-          </Link>
-          <Link
-            href={"/"}
-            className="block px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1]"
-          >
-            Tours
-          </Link>
-          <Link
-            href={"/"}
-            className="block px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1]"
-          >
-            Blog
-          </Link>
-          <Link
-            href={"/"}
-            className="block px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1]"
-          >
-            Contact Us
-          </Link>
-          <div className="relative">
-            <p
-              className="px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1] cursor-pointer flex items-center"
-              onClick={() => setIsCompanyOpen(!isCompanyOpen)}
-            >
-              Company <FaCaretDown />
-            </p>
-            {isCompanyOpen && (
-              <div className="absolute mt-1 bg-white text-black p-5 border border-gray-300 rounded-[10px] w-[200px] z-10">
-                <Link
-                  href="/about"
-                  className="block px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1]"
-                >
-                  About Us
-                </Link>
-                <Link
-                  href="/faq"
-                  className="block px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1]"
-                >
-                  FAQ
-                </Link>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
     </header>
   );
 };
 
-export {Header};
+export { Header };
