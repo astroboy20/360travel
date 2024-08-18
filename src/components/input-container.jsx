@@ -17,7 +17,7 @@ const InputContainer = ({ type, placeholder, icon, label, error, ...rest }) => {
     <div>
       <label className="text-[12px]">{label}</label>
       <div
-        className={`flex px-3 h-[50px] border-2 rounded-[13px] items-center ${
+        className={`flex px-3 h-[50px] border-2 rounded-[13px] items-center w-full ${
           isFocused ? " border-[#0f61f9]" : "border-gray-300"
         }`}
       >
@@ -28,7 +28,7 @@ const InputContainer = ({ type, placeholder, icon, label, error, ...rest }) => {
           onFocus={handleFocus}
           onBlur={handleBlur}
           {...rest}
-          className="outline-none border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-transparent text-[14px]"
+          className="outline-none border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-transparent text-[14px] w-full"
         />
       </div>
     </div>

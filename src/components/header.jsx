@@ -140,7 +140,7 @@ const Header = () => {
                 <Link href={"/"} className="hover:text-[#0a5aca]">
                   Blog
                 </Link>
-                <Link href={"/"} className="hover:text-[#0a5aca]">
+                <Link href={"/contact"} className="hover:text-[#0a5aca]">
                   Contact Us
                 </Link>
 
@@ -155,7 +155,7 @@ const Header = () => {
                   {isCompanyOpen && (
                     <div className="absolute mt-1 bg-white text-black p-[10%] border border-gray-300 rounded-[10px] w-[200px] z-10">
                       <Link
-                        href="/about"
+                        href="/about-us"
                         className="block px-5 py-2 hover:bg-gray-100 hover:text-[#3554d1]"
                       >
                         About Us
@@ -220,7 +220,7 @@ const Header = () => {
                 Blog
               </Link>
               <Link
-                href={"/"}
+                href={"/contact"}
                 className=" hover:bg-gray-100 hover:text-[#3554d1]"
               >
                 Contact Us
@@ -235,7 +235,7 @@ const Header = () => {
                 {isCompanyOpen && (
                   <div className="absolute flex flex-col gap-5 left-0  mt-1 bg-white text-black p-5 border border-gray-300 rounded-[10px] w-[200px] z-10">
                     <Link
-                      href="/about"
+                      href="/about-us"
                       className=" hover:bg-gray-100 hover:text-[#3554d1]"
                     >
                       About Us
