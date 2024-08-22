@@ -17,52 +17,52 @@ const Hero = () => {
   };
 
   return (
-    <div className="py-[2%] px-[5%] lg:px-[6%] bg-[#eceffb] flex justify-between w-full">
+    <div className="py-[2%] px-[5%] lg:px-[6%] bg-[#f9e9f2] flex justify-between w-full">
       <div className="flex flex-col gap-10 w-full lg:w-auto">
-        <div className="uppercase text-[30px] lg:text-[50px] font-[800] flex flex-col">
+        {/* <div className="uppercase text-[30px] lg:text-[50px] font-[800] flex flex-col">
           <span className="leading-[43.5px] lg:leading-[72.5px]">
             Unforgettable trips
           </span>
           <span className="leading-[25px] text-[#3563ed]">
             unbeatable prices
           </span>
-        </div>
+        </div> */}
 
         <div className="flex flex-col gap-2">
-          <div className="flex gap-1 items-center">
-            <Button
-              onClick={() => handleSelected("hotel")}
-              className={`text-[14px] lg:text-[18px] flex items-center gap-2  rounded-[10px] px-[10px] py-[5px] lg:p-[25px]  hover:bg-[#287dfa] hover:text-white ${
-                selected === "hotel"
-                  ? "border-0 bg-[#287dfa] text-white"
-                  : "border-2 border-[#287dfa] text-[#287dfa] bg-[#e8f2ff] "
-              }`}
-            >
-              <LuHotel size={"20px"} /> Hotel
-            </Button>
-            <Button
-              onClick={() => handleSelected("flight")}
-              className={`text-[14px] lg:text-[18px] flex items-center gap-2 rounded-[10px] py-[5px] lg:p-[25px] hover:bg-[#287dfa] hover:text-white ${
-                selected === "flight"
-                  ? "border-0 bg-[#287dfa] text-white"
-                  : "border-2 border-[#287dfa] text-[#287dfa] bg-[#e8f2ff] "
-              }`}
-            >
-              <BsAirplane size={"20px"} /> Flights
-            </Button>
-            <Button
-              onClick={() => handleSelected("tour")}
-              className={`text-[14px] lg:text-[18px] flex items-center gap-2  rounded-[10px] py-[5px] lg:p-[25px] hover:bg-[#287dfa] hover:text-white ${
-                selected === "tour"
-                  ? "border-0 bg-[#287dfa] text-white"
-                  : "border-2  border-[#287dfa] text-[#287dfa] bg-[#e8f2ff] "
-              }`}
-            >
-              <LiaToolboxSolid size={"20px"} /> Tours
-            </Button>
-          </div>
           <div className="">
-            <Card className="shadow-[0_0_40px_0,rgba(82,85,90,0.1)] rounded-[13px] lg:p-[3%]  p-[5%] w-full lg:w-[600px]">
+            <Card className="shadow-[0_0_40px_0,rgba(82,85,90,0.1)] rounded-[13px] lg:p-[3%]  p-[5%] w-full lg:w-[600px] flex flex-col gap-10">
+              <div className="flex gap-1 items-center">
+                <Button
+                  onClick={() => handleSelected("hotel")}
+                  className={`text-[14px] lg:text-[18px] flex items-center gap-2  rounded-[10px] px-[10px] py-[5px] lg:p-[25px]  hover:bg-[#bf2180] hover:text-white ${
+                    selected === "hotel"
+                      ? "border-0 bg-[#bf2180] text-white"
+                      : "border-2 border-[#bf2180] text-[#bf2180] bg-[#f9e9f2] "
+                  }`}
+                >
+                  <LuHotel size={"20px"} /> Hotel
+                </Button>
+                <Button
+                  onClick={() => handleSelected("flight")}
+                  className={`text-[14px] lg:text-[18px] flex items-center gap-2 rounded-[10px] py-[5px] lg:p-[25px] hover:bg-[#bf2180] hover:text-white ${
+                    selected === "flight"
+                      ? "border-0 bg-[#bf2180] text-white"
+                      : "border-2 border-[#bf2180] text-[#bf2180] bg-[#f9e9f2] "
+                  }`}
+                >
+                  <BsAirplane size={"20px"} /> Flights
+                </Button>
+                <Button
+                  onClick={() => handleSelected("tour")}
+                  className={`text-[14px] lg:text-[18px] flex items-center gap-2  rounded-[10px] py-[5px] lg:p-[25px] hover:bg-[#bf2180] hover:text-white ${
+                    selected === "tour"
+                      ? "border-0 bg-[#bf2180] text-white"
+                      : "border-2  border-[#bf2180] text-[#bf2180] bg-[f9e9f2] "
+                  }`}
+                >
+                  <LiaToolboxSolid size={"20px"} /> Tours
+                </Button>
+              </div>
               {selected === "hotel" && <Hotels />}
               {selected === "flight" && <Flight />}
               {selected === "tour" && <Tour />}
@@ -70,10 +70,15 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className="hidden lg:block mt-auto">
+      {/* <div className="hidden lg:block mt-auto">
         {" "}
-        <Image src={"/images/hero.png"} width={500} height={400} alt="hero-image"/>
-      </div>
+        <Image
+          src={"/images/hero.png"}
+          width={500}
+          height={400}
+          alt="hero-image"
+        />
+      </div> */}
     </div>
   );
 };

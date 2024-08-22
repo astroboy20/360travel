@@ -73,7 +73,7 @@ const Header = () => {
     <header>
       <div
         ref={infoRef} // Reference for the first section
-        className="bg-[#3554D1] text-white flex justify-between items-center py-1 px-[2%] text-[12px] lg:text-[0.75rem]"
+        className="bg-[#bf2180] text-white flex justify-between items-center py-1 px-[2%] text-[12px] lg:text-[0.75rem]"
       >
         <p className="flex gap-5">
           <span className="hidden lg:block">+1234567890</span>{" "}
@@ -116,7 +116,7 @@ const Header = () => {
       </div>
       <div
         className={`flex justify-between items-center py-[3%] lg:py-[1%] px-[2%] ${
-          showMenu ? "bg-white" : "bg-[#eef0fb]"
+          showMenu ? "bg-white" : "bg-[#f9e9f2]"
         }  ${
           isHeaderFixed
             ? "fixed top-0 left-0 w-full z-50 shadow-lg bg-white"
@@ -128,19 +128,19 @@ const Header = () => {
             <div className="flex gap-8 items-center">
               <h1 className="text-[20px] lg:text-[40px]">360Travels</h1>
               <div className="hidden lg:flex gap-5 text-[15px] text-[#051036]">
-                <Link href={"/"} className="hover:text-[#0a5aca]">
+                <Link href={"/"} className="hover:text-[#bf2180]">
                   Hotels
                 </Link>
-                <Link href={"/"} className="hover:text-[#0a5aca]">
+                <Link href={"/"} className="hover:text-[#bf2180]">
                   Flights
                 </Link>
-                <Link href={"/"} className="hover:text-[#0a5aca]">
+                <Link href={"/"} className="hover:text-[#bf2180]">
                   Tours
                 </Link>
-                <Link href={"/"} className="hover:text-[#0a5aca]">
+                <Link href={"/"} className="hover:text-[#bf2180]">
                   Blog
                 </Link>
-                <Link href={"/contact"} className="hover:text-[#0a5aca]">
+                <Link href={"/contact"} className="hover:text-[#bf2180]">
                   Contact Us
                 </Link>
 
@@ -149,7 +149,7 @@ const Header = () => {
                   onMouseEnter={() => setIsCompanyOpen(true)}
                   onMouseLeave={() => setIsCompanyOpen(false)}
                 >
-                  <p className="hover:text-[#0a5aca] cursor-pointer flex gap-2 items-center">
+                  <p className="hover:text-[#bf2180] cursor-pointer flex gap-2 items-center">
                     Company <FaCaretDown />
                   </p>
                   {isCompanyOpen && (
@@ -175,13 +175,13 @@ const Header = () => {
             <div className="hidden lg:flex items-center gap-5">
               <Link
                 href={"/signin"}
-                className="bg-[#0068ef] text-white rounded-[13px] px-[30px] py-[14px] text-[14px] hover:bg-[#3554d1] hover:transition-all"
+                className="bg-[#bf2180] text-white rounded-[13px] px-[30px] py-[14px] text-[14px] hover:bg-[#bf2180] hover:transition-all"
               >
                 Register
               </Link>
               <Link
                 href={"/login"}
-                className="border border-[#0068ef] text-[#0068ef] rounded-[13px] px-[30px] py-[14px] text-[14px] hover:bg-[#3554d1] hover:text-white hover:transition-all"
+                className="border border-[#bf2180] text-[#bf2180] rounded-[13px] px-[30px] py-[14px] text-[14px] hover:bg-[#bf2180] hover:text-white hover:transition-all"
               >
                 Login
               </Link>
