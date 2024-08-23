@@ -71,7 +71,7 @@ const Header = () => {
 
   return (
     <header>
-      <div
+      {/* <div
         ref={infoRef} // Reference for the first section
         className="bg-[#bf2180] text-white flex justify-between items-center py-1 px-[2%] text-[12px] lg:text-[0.75rem]"
       >
@@ -113,10 +113,10 @@ const Header = () => {
             <FaTelegramPlane size={"15px"} />
           </div>
         </div>
-      </div>
+      </div> */}
       <div
         className={`flex justify-between items-center py-[3%] lg:py-[1%] px-[2%] ${
-          showMenu ? "bg-white" : "bg-[#f9e9f2]"
+          showMenu ? "bg-white" : "bg-[#fff]"
         }  ${
           isHeaderFixed
             ? "fixed top-0 left-0 w-full z-50 shadow-lg bg-white"
@@ -127,7 +127,9 @@ const Header = () => {
           <div className="w-full flex justify-between items-center ">
             <div className="flex gap-8 items-center">
               <h1 className="text-[20px] lg:text-[40px]">360Travels</h1>
-              <div className="hidden lg:flex gap-5 text-[15px] text-[#051036]">
+            
+            </div>
+            <div className="hidden lg:flex gap-5 text-[15px] text-[#051036]">
                 <Link href={"/"} className="hover:text-[#bf2180]">
                   Hotels
                 </Link>
@@ -170,26 +172,19 @@ const Header = () => {
                   )}
                 </div>
               </div>
-            </div>
-
             <div className="hidden lg:flex items-center gap-5">
               <Link
                 href={"/signin"}
-                className="bg-[#bf2180] text-white rounded-[13px] px-[30px] py-[14px] text-[14px] hover:bg-[#bf2180] hover:transition-all"
+                className="bg-[#bf2180] text-white rounded-[8px] px-[30px] py-[10px] text-[14px] hover:bg-[#bf2180] hover:transition-all"
               >
-                Register
+                Signup
               </Link>
-              <Link
-                href={"/login"}
-                className="border border-[#bf2180] text-[#bf2180] rounded-[13px] px-[30px] py-[14px] text-[14px] hover:bg-[#bf2180] hover:text-white hover:transition-all"
-              >
-                Login
-              </Link>
+             
             </div>
 
             <div className="flex gap-3 items-center lg:hidden">
-              <HiOutlineUserCircle size={"20px"} />
-              <TbMenuDeep size={"20px"} onClick={handleShowMenu} />
+              {/* <HiOutlineUserCircle size={"20px"} /> */}
+              <TbMenuDeep size={"30px"} onClick={handleShowMenu} />
             </div>
           </div>
 
