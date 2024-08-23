@@ -3,6 +3,7 @@ import { Header } from "@/components/header";
 import { About } from "@/container/home/about";
 import { Blog } from "@/container/home/blog";
 import { Deals } from "@/container/home/deals";
+import { FAQ } from "@/container/home/faqs";
 import Hero from "@/container/home/hero/hero";
 import { Price } from "@/container/home/price-about";
 import { Promo } from "@/container/home/promo";
@@ -14,9 +15,10 @@ export default function Home() {
       <Header />
       <Hero />
       <About />
-      <Price />
+      {/* <Price /> */}
       <Deals />
-      <Promo />
+      <FAQ/>
+      {/* <Promo /> */}
       <Testimonials />
       <Blog />
       <Footer />

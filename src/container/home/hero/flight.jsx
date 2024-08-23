@@ -61,7 +61,7 @@ const Flight = () => {
                 Flying From
               </label>
               <div className="border p-3 flex gap-2 items-center rounded-[13px] w-full">
-                <PiAirplaneTakeoffThin size={"20px"} color="#0f61f9" />
+                <PiAirplaneTakeoffThin size={"20px"} color="#bf2180" />
                 <input
                   className="outline-none w-full text-[12px]"
                   placeholder="Flying From"
@@ -82,7 +82,7 @@ const Flight = () => {
                 <PiAirplaneLandingThin
                   size={"20px"}
                   style={{ marginLeft: "10px" }}
-                  color="#0f61f9"
+                  color="#bf2180"
                 />
                 <input
                   className="outline-none w-full text-[12px]"
@@ -94,13 +94,13 @@ const Flight = () => {
           <div className="w-full lg:w-2/5">
             <label className="block text-sm mb-1 text-[12px]">Passengers</label>
             <div className="border p-3 flex gap-2 items-center rounded-[13px] w-full ">
-              <FiUser size={"25px"} color="#0f61f9" />
+              <FiUser size={"25px"} color="#bf2180" />
               <input
                 className="outline-none w-full text-[12px]"
                 placeholder="Number of Passengers"
               />
               <span className="flex items-center justify-center rounded-full border border-black p-1">
-                <SlArrowDown size={"15px"} color="#000" />
+                <SlArrowDown size={"15px"} color="#bf2180" />
               </span>
             </div>
           </div>
@@ -110,11 +110,11 @@ const Flight = () => {
           <span className="w-full lg:w-1/2">
             <label className="text-[12px]">Departure Date</label>
             {/* <Input type="date" className="w-full border rounded-[13px] p-3" /> */}
-            <DatePicker/>
+            <DatePicker />
           </span>
 
           <div className="mt-auto w-full lg:w-1/2">
-            <Button className="w-full bg-[#0f61f9] text-white h-[50px] font-600 rounded-[13px] text-[12px] flex items-center justify-center">
+            <Button className="w-full bg-[#bf2180] text-white h-[50px] font-600 rounded-[13px] text-[12px] flex items-center justify-center">
               <IoIosSearch />
               Find your Hotel
             </Button>

@@ -50,16 +50,14 @@ const Testimonials = () => {
   };
 
   return (
-    <main className="py-[10%] px-[5%] lg:py-[5%] lg:px-[10%] gap-10 bg-[#E5F0FD]">
+    <main className="py-[10%] px-[5%] lg:py-[5%] lg:px-[10%] gap-10 bg-[#f9e9f2]">
       <div className="grid grid-cols-1 lg:grid-cols-2  gap-10 lg:gap-20">
         <div className="flex flex-col gap-3 lg:gap-5">
           <h1 className="text-[24px] lg:text-[30px] font-bold leading-[43.5px]">
-            Exceptional Service
+            What Our Travelers Are Saying
           </h1>
           <p className="text-[#697488] lg:leading-[35px]">
-            Your satisfaction is our top priority. Our dedicated team of travel
-            experts is available round the clock to assist you at every step of
-            your journey.
+            Real stories from our community of explorers.
           </p>
 
           <Image

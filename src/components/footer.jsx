@@ -15,7 +15,7 @@ import { Button } from "./ui/button";
 import Image from "next/image";
 const Footer = () => {
   return (
-    <footer className="bg-[#13357B] px-[10%] text-white py-4">
+    <footer className="bg-[#bf2180] px-[10%] text-white py-4">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-0 py-[5%]">
         <div className="flex flex-col gap-8">
           <h1 className="text-[20px] lg:text-[50px]">360Travels</h1>
@@ -70,12 +70,12 @@ const Footer = () => {
           <p> Get Updates & More</p>
           <div>
             <div className="flex gap-3 items-center bg-white px-3 py-2 rounded-[13px]">
-              <MdOutlineMail color="#1062fe" size={"30px"} />
+              <MdOutlineMail color="#bf2180" size={"30px"} />
               <input
                 placeholder="Enter your email"
                 className="bg-transparent w-full outline-none text-black text-[13px]"
               />
-              <Button className="rounded-[10px] bg-[#1062fe] text-[15px]">
+              <Button className="rounded-[10px] bg-[#bf2180] text-[15px]">
                 Subscribe
               </Button>
             </div>
