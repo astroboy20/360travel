@@ -18,7 +18,7 @@ const Footer = () => {
     <footer className="bg-[#bf2180] px-[10%] text-white py-4">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-0 py-[5%]">
         <div className="flex flex-col gap-8">
-          <h1 className="text-[20px] lg:text-[50px]">360Travels</h1>
+          <h1 className="text-[20px] lg:text-[50px]">GalaxyTravel</h1>
           <div className="flex flex-col gap-5 lg:flex-row lg:gap-10">
             <div className="flex flex-col gap-2">
               <p className="text-[14px]">Toll Free Customer Care</p>
@@ -27,7 +27,7 @@ const Footer = () => {
             <div className="flex flex-col gap-2">
               <p className="text-[14px]">Need live support?</p>
               <p className="text-[16px] lg:text-[18px]">
-                support@360travel.net
+                support@GalaxyTravel.net
               </p>
             </div>
           </div>
@@ -62,7 +62,7 @@ const Footer = () => {
             </div>
             <p className="text-[12px] lg:text-[14px]">
               {" "}
-              © 2022-2024 360Travel All rights reserved.
+              © 2022-2024 GalaxyTravel All rights reserved.
             </p>
           </div>
         </div>
@@ -92,14 +92,14 @@ const Footer = () => {
               <p> Tours</p>
             </div>
             <div className="flex flex-col gap-3 text-[14px] lg:text-[16px]">
-              <p>About 360Travel</p>
+              <p>About GalaxyTravel</p>
               <p>About Us</p>
               <p>Contact Us</p>
               <p>FAQ</p>
             </div>
             <div className="flex flex-col gap-3 text-[14px] lg:text-[16px]">
-              <p>Partner with 360Travel</p>
-              <p>partner@360travel.net</p>
+              <p>Partner with GalaxyTravel</p>
+              <p>partner@GalaxyTravel.net</p>
             </div>
           </div>
         </div>

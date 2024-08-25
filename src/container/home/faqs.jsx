@@ -11,9 +11,9 @@ const FAQ = () => {
 
   const faqs = [
     {
-      question: "How do I book a trip with 360Travel?",
+      question: "How do I book a trip with GalaxyTravel?",
       answer:
-        "Booking with 360Travel is simple! Just browse our destinations, select your package, and complete the booking in just two clicks. You’ll receive a confirmation email with all the details right away.",
+        "Booking with GalaxyTravel is simple! Just browse our destinations, select your package, and complete the booking in just two clicks. You’ll receive a confirmation email with all the details right away.",
     },
     {
       question: "What kind of customer support do you offer?",

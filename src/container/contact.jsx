@@ -103,7 +103,7 @@ const Contact = () => {
                 Email
               </h1>
               <p className="text-[12px] lg:text-[14px] leading-[30px] text-[#697488]">
-                support@360travel.net
+                support@GalaxyTravel.net
               </p>
             </div>{" "}
           </div>

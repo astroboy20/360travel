@@ -36,7 +36,7 @@ const Header = () => {
         <div className="flex flex-col w-full  items-center gap-10">
           <div className="w-full flex justify-between items-center ">
             <div className="flex gap-8 items-center">
-              <h1 className="text-[20px] lg:text-[40px]">360Travels</h1>
+              <h1 className="text-[20px] lg:text-[40px]">GalaxyTravel</h1>
             </div>
             <div className="hidden lg:flex gap-5 text-[15px] text-[#051036]">
               <Link href={"/"} className="hover:text-[#bf2180]">

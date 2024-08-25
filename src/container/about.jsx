@@ -72,7 +72,7 @@ const About = () => {
       <div className="flex flex-col gap-3">
         <div className="flex flex-col gap-2 text-left">
           <h1 className="text-[24px] lg:text-[30px] font-bold leading-[43.5px]">
-            About 360Travel
+            About GalaxyTravel
           </h1>
           <p className="text-[#697488] leading-0 lg:leading-[35px]">
             Unforgettable trips, unbeatable prices
@@ -82,7 +82,7 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
           <div className="flex flex-col gap-3">
             <p>
-              360Travel is your reliable partner in the world of travel. We
+            GalaxyTravel is your reliable partner in the world of travel. We
               offer a wide range of travel services, among which you are sure to
               find the perfect fit for your needs and wishes.
             </p>
@@ -92,7 +92,7 @@ const About = () => {
               travel. We strive to provide you with high quality service as well
               as save your time and money. We are convinced that travel is not
               only a vacation, but also an opportunity to broaden your horizons
-              and enjoy new experiences. With 360Travel you can be sure that
+              and enjoy new experiences. With GalaxyTravel you can be sure that
               your trip will be unforgettable and the price will be unbeatable.
               We are always available to help you plan and organize your next
               trip so you can enjoy every moment of your vacation.

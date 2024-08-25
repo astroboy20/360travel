@@ -12,7 +12,7 @@ const About = () => {
       {/* Hero Section */}
       <div className="text-center max-w-2xl mx-auto">
         <h1 className="text-[26px] lg:text-[34px] font-bold leading-tight text-[#051036]">
-          Why 360Travel?
+          Why GalaxyTravel?
         </h1>
         <p className="text-[16px] lg:text-[18px] text-[#697488] mt-2 lg:mt-4 leading-relaxed">
           Travel on your terms – extraordinary, affordable, unforgettable.
@@ -23,7 +23,7 @@ const About = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20">
         <div className="flex flex-col gap-7 lg:gap-10 max-w-lg mx-auto lg:mx-0">
           <p className="text-[16px] lg:text-[16px] text-[#051036] leading-relaxed">
-            At 360Travel, we believe travel is more than a destination—it's a
+            At GalaxyTravel, we believe travel is more than a destination—it's a
             way of life. We’re not just here to get you from point A to point B;
             we’re here to make the journey as remarkable as the destination
             itself. Imagine exploring the world without breaking the bank,
