@@ -48,12 +48,12 @@ const Register = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(userData);
     setIsLoading(true);
     if (validate()) {
-      axios
+      await axios
         .post("https://360.futamart.com/auth/signup", userData)
         .then((response) => {
           console.log(response);

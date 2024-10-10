@@ -40,12 +40,12 @@ const Login = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
     if (validate()) {
-      axios
+      await axios
         .post("https://360.futamart.com/auth/login", userData)
         .then((response) => {
           console.log(response);
@@ -129,7 +129,7 @@ const Login = () => {
               isLoading={isLoading}
               className="bg-[#bf2180] px-3 h-[45px] rounded-[13px] hover:bg-[#bf2180] hover:text-white"
             >
-              {isLoading ? <ClipLoader  color="#fff" /> : "Login"}
+              {isLoading ? <ClipLoader color="#fff" /> : "Login"}
             </Button>
           </div>
         </form>
