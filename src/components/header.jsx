@@ -31,12 +31,12 @@ const Header = () => {
   return (
     <header>
       <div
-        className={`flex justify-between items-center py-[3%] lg:py-[1%] px-[2%] fixed top-0 left-0 w-full z-50 shadow-lg bg-white`}
+        className={`flex justify-between items-center py-[10%] px-[6%]  lg:py-[1%] lg:px-[2%] fixed top-0 left-0 w-full z-50 shadow-lg bg-white`}
       >
         <div className="flex flex-col w-full  items-center gap-10">
           <div className="w-full flex justify-between items-center ">
             <div className="flex gap-8 items-center">
-              <h1 className="text-[20px] lg:text-[40px]">GalaxyTravel</h1>
+              <h1 className="text-[24px] lg:text-[40px] font-bold">GalaxyTravel</h1>
             </div>
             <div className="hidden lg:flex gap-5 text-[15px] text-[#051036]">
               <Link href={"/"} className="hover:text-[#bf2180]">
@@ -66,8 +66,8 @@ const Header = () => {
             </div>
 
             <div className="flex gap-3 items-center lg:hidden">
-              <HiOutlineUserCircle size={"30px"} />
-              <TbMenuDeep size={"30px"} onClick={handleShowMenu} />
+              <HiOutlineUserCircle size={40} />
+              <TbMenuDeep size={40} onClick={handleShowMenu} />
             </div>
           </div>
 

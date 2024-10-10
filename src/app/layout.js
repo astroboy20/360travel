@@ -1,5 +1,7 @@
+import { ReactQueryClientProvider } from "@/provider/provider";
 import "./globals.css";
 import { Inter, Poppins } from "next/font/google";
+import { ChakraProvider } from "@chakra-ui/react";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({
@@ -12,13 +14,18 @@ const poppins = Poppins({
 
 export const metadata = {
   title: "GalaxyTravel",
-  description: "Explore the world with GalaxyTravel - your gateway to unforgettable adventures and seamless travel experiences.",
+  description:
+    "Explore the world with GalaxyTravel - your gateway to unforgettable adventures and seamless travel experiences.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={poppins.className}>{children}</body>
+      <body className={poppins.className}>
+        <ReactQueryClientProvider>
+          <ChakraProvider toastOptions={{ defaultOptions: { position: 'top' } }}>{children}</ChakraProvider>
+        </ReactQueryClientProvider>
+      </body>
     </html>
   );
 }

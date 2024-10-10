@@ -51,8 +51,8 @@ const Hotels = () => {
           </div>
 
           <div className="w-full mt-auto">
-            <Button className="w-full bg-[#bf2180] text-white h-[50px] font-600 rounded-[13px] flex items-center justify-center">
-              <IoIosSearch />
+            <Button className="w-full bg-[#bf2180] text-white h-[50px] font-600 rounded-[13px] flex items-center gap-2 text-[12px] justify-center">
+              <IoIosSearch size={20}/>
               Find your Hotel
             </Button>
           </div>

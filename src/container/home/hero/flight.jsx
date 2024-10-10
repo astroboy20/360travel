@@ -41,16 +41,6 @@ const Flight = () => {
             <SelectItem value="First">First</SelectItem>
           </SelectContent>
         </Select>
-
-        {/* <select className="border text-[14px] px-3 py-2 rounded-full w-full lg:w-fit">
-          <option disabled hidden value="">
-            Select flight type
-          </option>
-          <option>Economy</option>
-          <option>Economy Premium</option>
-          <option>Business</option>
-          <option>First</option>
-        </select> */}
       </div>
 
       <div>
@@ -114,8 +104,8 @@ const Flight = () => {
           </span>
 
           <div className="mt-auto w-full lg:w-1/2">
-            <Button className="w-full bg-[#bf2180] text-white h-[50px] font-600 rounded-[13px] text-[12px] flex items-center justify-center">
-              <IoIosSearch />
+            <Button className="w-full bg-[#bf2180] text-white h-[50px] font-600 rounded-[13px] text-[12px] flex gap-2 items-center justify-center">
+              <IoIosSearch size={20} />
               Find your Hotel
             </Button>
           </div>

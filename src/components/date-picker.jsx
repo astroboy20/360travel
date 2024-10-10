@@ -50,7 +50,7 @@ export const DatePicker = ({
         <Button
           variant={"outline"}
           className={cn(
-            "w-full justify-start text-left font-normal h-[50px] rounded-[13px]",
+            "w-full justify-start text-left font-normal h-[50px] rounded-[13px] text-[12px]",
             !date && "text-muted-foreground",
             buttonClassName
           )}
