@@ -1,57 +1,57 @@
-import React from "react";
-import Link from "next/link";
-import {
-  FaCompass,
-  FaHistory,
-  FaWallet,
-  FaCog,
-  FaQuestionCircle,
-  FaSignOutAlt,
-} from "react-icons/fa";
+"use client"
+import React from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { Compass, History, Wallet, Settings, LogOut } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 
-const SideBar = () => {
+const sidebarItems = [
+  { icon: Compass, label: "Overview", href: "/dashboard" },
+  { icon: History, label: "My Bookings", href: "/dashboard/bookings" },
+  { icon: Wallet, label: "Wallet & Payment", href: "/dashboard/wallet" },
+  { icon: Settings, label: "Account Settings", href: "/dashboard/settings" },
+]
+
+ const Sidebar = ()=> {
+  const pathname = usePathname()
+
   return (
-    <div className="hidden bg-gray-50 w-64 h-screen  lg:flex flex-col justify-between shadow-lg fixed overflow-y-hidden p-[3%]">
-      <div>
-        <ul className="space-y-8">
-          <li>
-            <Link href="/dashboard" className="flex items-center text-black">
-              <FaCompass className="mr-4" size={25} color="#bf2180"/> Overview
+    <aside className="hidden overflow-y-auto bg-white shadow-md lg:block">
+      <div className="flex h-full flex-col justify-between">
+        <div className="px-4 py-6">
+          <Link href="/dashboard" className="flex items-center space-x-2">
+            <span className="text-2xl font-bold text-[#bf2180]">GalaxyTravel</span>
+          </Link>
+          <nav className="mt-6 space-y-1">
+            {sidebarItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "flex items-center space-x-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors",
+                  pathname === item.href
+                    ? "bg-[#f9e9f2] text-[#bf2180]"
+                    : "text-gray-600 hover:bg-[#f9e9f2] hover:text-[#bf2180]"
+                )}
+              >
+                <item.icon className="h-5 w-5" />
+                <span>{item.label}</span>
+              </Link>
+            ))}
+          </nav>
+        </div>
+        <div className="p-4">
+          <Button variant="outline" className="w-full justify-start" asChild>
+            <Link href="/logout" className="space-x-2">
+              <LogOut className="h-4 w-4" />
+              <span>Logout</span>
             </Link>
-          </li>
-          <li>
-            <Link
-              href="/dashboard/bookings"
-              className="flex items-center text-black"
-            >
-              <FaHistory className="mr-4" size={25} color="#bf2180"/> My Bookings
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/dashboard/wallet"
-              className="flex items-center text-black"
-            >
-              <FaWallet className="mr-4" size={25} color="#bf2180"/> Wallet & Payment
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/dashboard/settings"
-              className="flex items-center text-black"
-            >
-              <FaCog className="mr-4" size={25} color="#bf2180"/> Account Settings
-            </Link>
-          </li>
-          <div>
-            <Link href="/logout" className="flex items-center text-black">
-              <FaSignOutAlt className="mr-4" size={25} color="#bf2180"/> Logout
-            </Link>
-          </div>
-        </ul>
+          </Button>
+        </div>
       </div>
-    </div>
-  );
-};
+    </aside>
+  )
+}
 
-export { SideBar };
+export {Sidebar}
