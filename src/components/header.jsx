@@ -67,7 +67,7 @@ const Header = () => {
             </div>
 
             <div className="flex gap-3 items-center lg:hidden">
-              <HiOutlineUserCircle size={40} />
+              {/* <HiOutlineUserCircle size={40} /> */}
               <TbMenuDeep size={40} onClick={handleShowMenu} />
             </div>
           </div>

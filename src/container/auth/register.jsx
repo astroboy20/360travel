@@ -56,7 +56,7 @@ const Register = () => {
       await axios
         .post("https://360.futamart.com/auth/signup", userData)
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           toast({
             title: "Registration successful!",
             description: "You have successfully registered.",
@@ -65,6 +65,7 @@ const Register = () => {
             isClosable: true,
           });
           setIsLoading(false);
+          router.push("/login")
         })
         .catch((error) => {
           console.log(error);

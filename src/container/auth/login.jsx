@@ -9,6 +9,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useToast } from "@chakra-ui/react";
 import { ClipLoader } from "react-spinners";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const toast = useToast();
@@ -48,7 +49,8 @@ const Login = () => {
       await axios
         .post("https://360.futamart.com/auth/login", userData)
         .then((response) => {
-          console.log(response);
+          // console.log(response);
+          Cookies.set("token",response.data?.data?.accessToken, { expires: 7 });
           toast({
             title: "Login successful!",
             description: "You have successfully logged in.",
@@ -57,7 +59,7 @@ const Login = () => {
             isClosable: true,
           });
           setIsLoading(false);
-          // Redirect or perform further actions after success
+          router.push("/dashboard");
         })
         .catch((error) => {
           console.log(error);
