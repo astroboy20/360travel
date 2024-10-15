@@ -1,129 +1,95 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
-import {
-  FaTwitter,
-  FaFacebookF,
-  FaTelegramPlane,
-  FaAngleDown,
-  FaCaretDown,
-} from "react-icons/fa";
-import { AiFillInstagram } from "react-icons/ai";
+
+import { useState } from "react";
 import Link from "next/link";
-import { HiOutlineUserCircle } from "react-icons/hi2";
-import { TbMenuDeep } from "react-icons/tb";
+import { Menu } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { usePathname } from "next/navigation";
 
-const Header = () => {
+export function Header() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const [isCompanyOpen, setIsCompanyOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("usd");
-  const [isHeaderFixed, setIsHeaderFixed] = useState(false);
-  const [showMenu, setShowMenu] = useState(false);
 
-  const handleSelect = (name) => {
-    setSelectedOption(name);
-    setIsOpen(false);
-  };
-
-  const handleShowMenu = () => {
-    setShowMenu(!showMenu);
-  };
+  const navItems = [
+    { href: "/hotels", label: "Hotels" },
+    { href: "/flights", label: "Flights" },
+    { href: "/", label: "Tours" },
+    { href: "/", label: "Blog" },
+    { href: "/about-us", label: "About" },
+  ];
 
   return (
-    <header>
-      <div
-        className={`flex justify-between items-center py-[10%] px-[6%]  lg:py-[1%] lg:px-[2%] fixed top-0 left-0 w-full z-50 shadow-lg bg-white`}
-      >
-        <div className="flex flex-col w-full  items-center gap-10">
-          <div className="w-full flex justify-between items-center ">
-            <div className="flex gap-8 items-center">
-              <h1 className="text-[24px] lg:text-[40px] font-bold">
-                GalaxyTravel
-              </h1>
-            </div>
-            <div className="hidden lg:flex gap-5 text-[15px] text-[#051036]">
-              <Link href={"/"} className="hover:text-[#bf2180]">
-                Hotels
-              </Link>
-              <Link href={"/"} className="hover:text-[#bf2180]">
-                Flights
-              </Link>
-              <Link href={"/"} className="hover:text-[#bf2180]">
-                Tours
-              </Link>
-              <Link href={"/"} className="hover:text-[#bf2180]">
-                Blog
-              </Link>
-              <Link href={"/about-us"} className="hover:text-[#bf2180]">
-                About
-              </Link>
-            </div>
-            <div className="hidden lg:flex items-center gap-5">
-              <Link
-                href={"/signup"}
-                className="bg-[#bf2180] text-white rounded-[8px] px-[30px] py-[10px] text-[14px] hover:bg-[#bf2180] hover:transition-all"
-              >
-                Get started
-              </Link>
-            </div>
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-16 items-center justify-between px-4 sm:px-8 lg:px-12">
+        <Link href="/" className="flex items-center space-x-2">
+          <span className="text-xl font-bold tracking-tight sm:text-2xl">
+            GalaxyTravel
+          </span>
+        </Link>
 
-            <div className="flex gap-3 items-center lg:hidden">
-              {/* <HiOutlineUserCircle size={40} /> */}
-              <TbMenuDeep size={40} onClick={handleShowMenu} />
-            </div>
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-4 lg:space-x-6">
+          {navItems.map((item, index) => (
+            <Link
+              key={index}
+              href={item.href}
+              className={
+                pathname === item.href
+                  ? "border-b-2 border-b-[#bf2180]"
+                  : `text-sm font-medium transition-colors hover:text-primary`
+              }
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Get Started Button and Mobile Menu */}
+        <div className="flex items-center space-x-4">
+          <Button asChild className="hidden sm:inline-flex bg-[#bf2180]">
+            <Link href="/signup">Get started</Link>
+          </Button>
+
+          {/* Mobile Menu */}
+          <div className="block lg:hidden">
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" aria-label="Toggle Menu">
+                  <Menu className="h-5 w-5" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <nav className="flex flex-col gap-4 mt-8">
+                  {navItems.map((item, index) => (
+                    <Link
+                      key={index}
+                      href={item.href}
+                      className={
+                        pathname === item.href
+                          ? "border-b-2 border-b-2-[#bf2180]"
+                          : "block px-2 py-1 text-lg hover:text-primary transition-colors"
+                      }
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </nav>
+                <div className="mt-8">
+                  <Button
+                    asChild
+                    className="w-full bg-[#bf2180]"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <Link href="/signup">Get started</Link>
+                  </Button>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
-
-          {showMenu && (
-            <div className="lg:hidden fixed flex flex-col gap-5  text-center left-0 w-full h-[100dvh] bg-white text-black  ">
-              <div
-                onClick={handleShowMenu}
-                className="ml-auto text-right font-bold mb-5 p-5"
-              >
-                <span>X</span>
-              </div>
-              <Link
-                href={"/"}
-                className="  hover:bg-gray-100 hover:text-[#bf2180]"
-              >
-                Hotels
-              </Link>
-              <Link
-                href={"/"}
-                className="hover:bg-gray-100 hover:text-[#bf2180]"
-              >
-                Flights
-              </Link>
-              <Link
-                href={"/"}
-                className="hover:bg-gray-100 hover:text-[#bf2180]"
-              >
-                Tours
-              </Link>
-              <Link
-                href={"/"}
-                className=" hover:bg-gray-100 hover:text-[#bf2180]"
-              >
-                Blog
-              </Link>
-              <Link
-                href={"/about-us"}
-                className=" hover:bg-gray-100 hover:text-[#bf2180]"
-              >
-                About
-              </Link>
-              <div className="hidden lg:flex items-center gap-5">
-                <Link
-                  href={"/signup"}
-                  className="bg-[#bf2180] text-white rounded-[8px] px-[30px] py-[10px] text-[14px] hover:bg-[#bf2180] hover:transition-all"
-                >
-                  Get started
-                </Link>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </header>
   );
-};
-
-export { Header };
+}

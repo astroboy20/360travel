@@ -89,7 +89,7 @@ const Login = () => {
   };
 
   return (
-    <main className="mt-[150px] mb-10 lg:mt-[150px] flex flex-col items-center justify-center">
+    <main className="my-10 flex flex-col items-center justify-center">
       <div className="border-2 w-[85%] lg:w-[30%] rounded-[8px] lg:p-[2%] py-[10%] px-[3%] flex flex-col gap-5 shadow-lg">
         <div>
           <h1 className="text-[16px] lg:text-[18px] leading-[33.75px] font-bold">
