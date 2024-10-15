@@ -113,6 +113,17 @@ const Hotels = () => {
       return;
     }
 
+    if (new Date(checkoutDate) <= new Date(checkinDate)) {
+      toast({
+        title: "Error!",
+        description: "Checkout date should be after the check-in date.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+      return;
+    }
+
     axios
       .get(
         `https://360.futamart.com/hotels?id=${id}&checkinDate=${checkinDate}&checkoutDate=${checkoutDate}`
@@ -175,7 +186,7 @@ const Hotels = () => {
                 <FiUser size={"30px"} color="#bf2180" />
                 <input
                   className="outline-none w-full"
-                  readonly
+                  readOnly
                   value={`Travellers ${totalTravellers} Rooms ${roomCount}`}
                 />
                 <span className="flex items-center justify-center rounded-full border border-black p-1">

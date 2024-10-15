@@ -1,146 +1,247 @@
 "use client"
-import { useState } from 'react';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetTrigger, SheetContent } from '@/components/ui/sheet';
-import { Menu } from 'lucide-react';
+import { useState } from 'react'
+import { Slider } from "@/components/ui/slider"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Button } from "@/components/ui/button"
+import { 
+  Pagination, 
+  PaginationContent, 
+  PaginationEllipsis, 
+  PaginationItem, 
+  PaginationLink, 
+  PaginationNext, 
+  PaginationPrevious, 
+} from "@/components/ui/pagination"
 
-const navItems = [
-  { href: '/hotels', label: 'All Hotels' },
-  { href: '/offers', label: 'Hotel Offers' },
-  { href: '/bookings', label: 'Your Bookings' },
-];
+const hotelData = [
+  {
+    name: 'Hotel Luxury',
+    location: 'Paris, France',
+    rating: 5,
+    originalPrice: 350,
+    discountedPrice: 280,
+    amenities: ['Free Wi-Fi', 'Breakfast Included', 'Pool'],
+  },
+  {
+    name: 'Ocean View Resort',
+    location: 'Maldives',
+    rating: 4,
+    originalPrice: 450,
+    discountedPrice: 400,
+    amenities: ['Oceanfront', 'Free Airport Shuttle', 'Spa'],
+  },
+  {
+    name: 'Mountain Retreat',
+    location: 'Switzerland',
+    rating: 5,
+    originalPrice: 600,
+    discountedPrice: 500,
+    amenities: ['Free Wi-Fi', 'Breakfast Included', 'Ski Access'],
+  },
+  {
+    name: 'City Lights Hotel',
+    location: 'New York, USA',
+    rating: 4,
+    originalPrice: 300,
+    discountedPrice: 250,
+    amenities: ['Free Wi-Fi', 'City View', 'Bar'],
+  },
+  {
+    name: 'Desert Oasis',
+    location: 'Dubai, UAE',
+    rating: 5,
+    originalPrice: 700,
+    discountedPrice: 600,
+    amenities: ['Pool', 'Private Beach', 'Luxury Spa'],
+  },
+  {
+    name: 'Cultural Stay',
+    location: 'Kyoto, Japan',
+    rating: 4,
+    originalPrice: 350,
+    discountedPrice: 320,
+    amenities: ['Free Wi-Fi', 'Traditional Rooms', 'Garden View'],
+  },
+]
 
-const HotelBooking = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const hotelBrands = [
+  { name: 'Hilton', logo: '🏨' },
+  { name: 'Marriott', logo: '🏨' },
+  { name: 'Hyatt', logo: '🏨' },
+  { name: 'InterContinental', logo: '🏨' },
+  { name: 'Accor', logo: '🏨' },
+]
 
-  const hotels = [
-    {
-      name: 'Hilton Times Square',
-      checkIn: '20th Oct 2024',
-      checkOut: '23rd Oct 2024',
-      duration: '3 Days, 2 Nights',
-      amenities: ['Free Wi-Fi', 'Breakfast Included', 'Pool Access'],
-      originalPrice: 'USD 600',
-      discountedPrice: 'USD 550',
-    },
-    {
-      name: 'Marriott Downtown',
-      checkIn: '22nd Oct 2024',
-      checkOut: '25th Oct 2024',
-      duration: '4 Days, 3 Nights',
-      amenities: ['Free Parking', 'Breakfast Included', 'Gym Access'],
-      originalPrice: 'USD 800',
-      discountedPrice: 'USD 700',
-    },
-    // Add more hotels as needed
-  ];
+export default function HotelSearchResults() {
+  const [priceRange, setPriceRange] = useState([200, 1000])
+  const [selectedRatings, setSelectedRatings] = useState([])
+  const [selectedBrands, setSelectedBrands] = useState([])
+  const [currentPage, setCurrentPage] = useState(1)
+  const itemsPerPage = 3
+
+  const handlePriceRangeChange = (newValues) => {
+    setPriceRange(newValues)
+  }
+
+  const handleRatingChange = (rating) => {
+    setSelectedRatings(prev =>
+      prev.includes(rating)
+        ? prev.filter(r => r !== rating)
+        : [...prev, rating]
+    )
+  }
+
+  const handleBrandChange = (brand) => {
+    setSelectedBrands(prev =>
+      prev.includes(brand)
+        ? prev.filter(b => b !== brand)
+        : [...prev, brand]
+    )
+  }
+
+  const filteredHotels = hotelData.filter(hotel =>
+    hotel.discountedPrice >= priceRange[0] &&
+    hotel.discountedPrice <= priceRange[1] &&
+    (selectedRatings.length === 0 || selectedRatings.includes(hotel.rating)) &&
+    (selectedBrands.length === 0 || selectedBrands.some(brand => hotel.name.includes(brand)))
+  )
+
+  const totalPages = Math.ceil(filteredHotels.length / itemsPerPage)
+  const paginatedHotels = filteredHotels.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  )
 
   return (
-    <div>
-      {/* Sidebar for mobile screens */}
-      <div className="block lg:hidden">
-        <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger asChild>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden"
-              aria-label="Toggle Menu"
-            >
-              <Menu className="h-5 w-5" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-            <nav className="flex flex-col gap-4 mt-8">
-              {navItems.map((item, index) => (
-                <Link
-                  key={index}
-                  href={item.href}
-                  className="block px-2 py-1 text-lg hover:text-primary transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-            <div className="mt-8">
-              <Button
-                asChild
-                className="w-full bg-[#bf2180]"
-                onClick={() => setIsOpen(false)}
-              >
-                <Link href="/signup">Get started</Link>
-              </Button>
-            </div>
-          </SheetContent>
-        </Sheet>
-      </div>
+    <div className="container p-4 lg:p-10">
+      <header className="bg-[#bf2180] text-white p-4 rounded-t-lg">
+        <div className="flex flex-col sm:flex-row justify-between items-center">
+          <h1 className="text-[18px] lg:text-xl font-bold mb-2 sm:mb-0">Hotel Search Results</h1>
+        </div>
+      </header>
 
-      {/* Main content */}
-      <div className="container mx-auto mt-8">
-        <h1 className="text-2xl font-semibold">54 Hotels found on 20-10-2024</h1>
-        <div className="flex flex-col lg:flex-row gap-4 mt-4">
-          {/* Filters Section */}
-          <div className="w-full lg:w-1/4 bg-white p-4 rounded-lg shadow-lg">
-            <h2 className="font-semibold text-lg">Filters</h2>
-            <div className="mt-4">
-              <p className="font-medium">Hotel Rating</p>
-              <ul>
-                <li><input type="checkbox" /> ⭐⭐⭐⭐⭐</li>
-                <li><input type="checkbox" /> ⭐⭐⭐⭐</li>
-                <li><input type="checkbox" /> ⭐⭐⭐</li>
-              </ul>
-            </div>
-            <div className="mt-4">
-              <p className="font-medium">Price Range</p>
-              <input type="range" min="100" max="3000" />
-            </div>
-            <div className="mt-4">
-              <p className="font-medium">Hotel Chains</p>
-              <ul>
-                <li><input type="checkbox" /> Marriott</li>
-                <li><input type="checkbox" /> Hilton</li>
-                <li><input type="checkbox" /> Hyatt</li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Hotel Listings */}
-          <div className="w-full lg:w-3/4">
-            {hotels.map((hotel, index) => (
-              <div
-                key={index}
-                className="flex flex-col sm:flex-row justify-between items-center bg-white p-4 rounded-lg shadow-lg mb-4"
-              >
-                <div className="flex flex-col">
-                  <h3 className="text-xl font-semibold">{hotel.name}</h3>
-                  <p>
-                    <strong>Stay Duration:</strong> {hotel.duration}
-                  </p>
-                  <p>
-                    <strong>Check-in:</strong> {hotel.checkIn} -{' '}
-                    <strong>Check-out:</strong> {hotel.checkOut}
-                  </p>
-                  <p>
-                    <strong>Amenities:</strong>{' '}
-                    {hotel.amenities.join(', ')}
-                  </p>
-                </div>
-                <div className="flex flex-col items-end mt-4 sm:mt-0">
-                  <p className="text-red-600 line-through">{hotel.originalPrice}</p>
-                  <p className="text-green-600 text-lg font-semibold">{hotel.discountedPrice}</p>
-                  <Button className="mt-2 bg-blue-500 text-white">
-                    Book Hotel
-                  </Button>
-                </div>
-              </div>
+      <div className="flex flex-col lg:flex-row gap-4 mt-4">
+        <aside className="w-full lg:w-1/4 bg-white p-4 rounded-lg shadow">
+          <h2 className="text-lg font-semibold mb-4">Hotel Ratings</h2>
+          <div className="space-y-2">
+            {[5, 4, 3].map((rating) => (
+              <label key={rating} className="flex items-center">
+                <Checkbox
+                  checked={selectedRatings.includes(rating)}
+                  onCheckedChange={() => handleRatingChange(rating)}
+                />
+                <span className="ml-2">{rating} Stars</span>
+              </label>
             ))}
           </div>
-        </div>
+
+          <h2 className="text-lg font-semibold mt-6 mb-4">Price Range</h2>
+          <Slider
+            defaultValue={priceRange}
+            max={1000}
+            min={200}
+            step={10}
+            onValueChange={handlePriceRangeChange}
+          />
+          <div className="flex justify-between mt-2">
+            <span>${priceRange[0]}</span>
+            <span>${priceRange[1]}</span>
+          </div>
+
+          <h2 className="text-lg font-semibold mt-6 mb-4">Hotel Brands</h2>
+          <div className="space-y-2">
+            {hotelBrands.map((brand) => (
+              <label key={brand.name} className="flex items-center">
+                <Checkbox
+                  checked={selectedBrands.includes(brand.name)}
+                  onCheckedChange={() => handleBrandChange(brand.name)}
+                />
+                <span className="ml-2">{brand.logo} {brand.name}</span>
+              </label>
+            ))}
+          </div>
+        </aside>
+
+        <main className="w-full lg:w-3/4">
+          <div className="bg-white p-4 rounded-lg shadow mb-4">
+            <div className="flex flex-col sm:flex-row justify-between items-center">
+              <h2 className="text-lg font-semibold mb-2 sm:mb-0">
+                {filteredHotels.length} hotels found
+              </h2>
+              <select className="border rounded p-2">
+                <option>Price (Low to high)</option>
+                <option>Price (High to low)</option>
+              </select>
+            </div>
+          </div>
+
+          {paginatedHotels.map((hotel, index) => (
+            <div key={index} className="bg-white p-4 rounded-lg shadow mb-4">
+              <div className="flex flex-col sm:flex-row justify-between items-center mb-4">
+                <div className="flex items-center mb-2 sm:mb-0">
+                  <span className="text-2xl mr-2">🏨</span>
+                  <div>
+                    <h3 className="font-semibold">{hotel.name}</h3>
+                    <p className="text-sm text-gray-500">{hotel.location}</p>
+                  </div>
+                </div>
+                <div className="text-center sm:text-right">
+                  <p className="text-sm line-through text-gray-500">USD {hotel.originalPrice}</p>
+                  <p className="text-lg font-bold text-[#bf2180]">USD {hotel.discountedPrice}</p>
+                </div>
+              </div>
+              <div className="flex flex-col sm:flex-row justify-between items-center mb-4">
+                <div className="text-center sm:text-left mb-2 sm:mb-0">
+                  <p className="font-semibold">{hotel.rating} Stars</p>
+                  <p className="text-sm text-gray-500">Rating</p>
+                </div>
+                <div className="text-center sm:text-right">
+                  <p className="text-sm text-gray-500">Amenities</p>
+                  <p>{hotel.amenities.join(', ')}</p>
+                </div>
+              </div>
+              <div className="flex flex-col sm:flex-row justify-between items-center">
+                <Button variant="outline" className="w-full sm:w-auto mb-2 sm:mb-0">
+                  More Details
+                </Button>
+                <Button className="w-full sm:w-auto bg-[#bf2180] hover:bg-[#a11c6d]">
+                  Book Now
+                </Button>
+              </div>
+            </div>
+          ))}
+
+          <Pagination>
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious 
+                  href="#" 
+                  onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                  className={currentPage === 1 ? 'pointer-events-none opacity-50' : ''}
+                />
+              </PaginationItem>
+              {[...Array(totalPages)].map((_, i) => (
+                <PaginationItem key={i}>
+                  <PaginationLink 
+                    href="#" 
+                    onClick={() => setCurrentPage(i + 1)}
+                    isActive={currentPage === i + 1}
+                  >
+                    {i + 1}
+                  </PaginationLink>
+                </PaginationItem>
+              ))}
+              <PaginationItem>
+                <PaginationNext 
+                  href="#" 
+                  onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                  className={currentPage === totalPages ? 'pointer-events-none opacity-50' : ''}
+                />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        </main>
       </div>
     </div>
-  );
-};
-
-export  {HotelBooking};
+  )
+}
