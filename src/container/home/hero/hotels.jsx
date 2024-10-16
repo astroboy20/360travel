@@ -18,11 +18,14 @@ import {
 import { countryList } from "@/provider/data";
 import axios from "axios";
 import { useToast } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
 
 const Hotels = () => {
   const toast = useToast();
+  const router = useRouter();
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [cities, setCities] = useState("");
   const [id, setId] = useState(null);
   const [selectedCity, setSelectedCity] = useState("");
@@ -48,10 +51,10 @@ const Hotels = () => {
           setIsLoading(false);
         });
     }
-  }, [cities]); // Trigger the effect when `cities` changes
+  }, [cities]);
 
   const handleCityChange = (e) => {
-    setCities(e.target.value); // Update the city search term
+    setCities(e.target.value);
     setSelectedCity("");
     setId(null);
   };
@@ -101,6 +104,19 @@ const Hotels = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
+    const formData = {
+      selectedCity,
+      travellerCount,
+      roomCount,
+      childrenCount,
+      checkinDate,
+      checkoutDate,
+    };
+
+    if (typeof window !== "undefined") {
+      localStorage.setItem("formData", JSON.stringify(formData));
+    }
 
     if (!id || !checkinDate || !checkoutDate) {
       toast({
@@ -129,9 +145,16 @@ const Hotels = () => {
         `https://360.futamart.com/hotels?id=${id}&checkinDate=${checkinDate}&checkoutDate=${checkoutDate}`
       )
       .then((response) => {
-        console.log(response);
+        setLoading(false);
+        if (typeof window !== "undefined") {
+          localStorage.setItem("hotel-response", JSON.stringify(response.data));
+        }
+        router.push("/hotel-booking");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setLoading(false);
+        console.log(error);
+      });
   };
   return (
     <div>
@@ -275,6 +298,7 @@ const Hotels = () => {
                 selectedDate={checkinDate}
                 placeholder={"Pick a date"}
                 onDateChange={handleCheckinChange}
+                minDate={new Date()}
               />
             </div>
 
@@ -284,6 +308,7 @@ const Hotels = () => {
                 selectedDate={checkoutDate}
                 placeholder={"Pick a date"}
                 onDateChange={handleCheckoutChange}
+                minDate={new Date()}
               />
             </div>
           </div>
@@ -293,8 +318,15 @@ const Hotels = () => {
               className="w-full bg-[#bf2180] text-white h-[50px] font-600 rounded-[13px] flex items-center gap-2 text-[12px] justify-center hover:bg-[#bf2180] hover:text-white"
               onClick={handleSubmit}
             >
-              <IoIosSearch size={20} />
-              Find your Hotel
+              {loading ? (
+                <ClipLoader color="#fff"/>
+              ) : (
+                <div className="flex items-center gap-2">
+                  {" "}
+                  <IoIosSearch size={20} />
+                  Find your Hotel
+                </div>
+              )}
             </Button>
           </div>
         </div>

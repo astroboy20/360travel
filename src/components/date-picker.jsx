@@ -10,11 +10,13 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-
+import { useToast } from "@chakra-ui/react";
 
 const formatDateToLocal = (date) => {
   const adjustedDate = new Date(date);
-  adjustedDate.setMinutes(adjustedDate.getMinutes() - adjustedDate.getTimezoneOffset());
+  adjustedDate.setMinutes(
+    adjustedDate.getMinutes() - adjustedDate.getTimezoneOffset()
+  );
   return adjustedDate.toISOString().slice(0, 10);
 };
 
@@ -24,10 +26,24 @@ export const DatePicker = ({
   placeholder,
   buttonClassName,
   calendarClassName,
+  minDate, // Add minDate to the props
 }) => {
+  const toast = useToast();
   const [date, setDate] = useState(selectedDate);
 
   const handleDateSelect = (selected) => {
+    // Check if selected date is after or equal to minDate
+    if (minDate && new Date(selected) < new Date(minDate)) {
+      toast({
+        title: "Invalid Date!",
+        description: "Check-in date cannot be in the past.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+      return;
+    }
+
     const formattedSelectedDate = formatDateToLocal(selected);
     setDate(selected);
     if (onDateChange) {
@@ -41,7 +57,7 @@ export const DatePicker = ({
         <Button
           variant={"outline"}
           className={cn(
-            "w-full justify-start text-left font-normal h-[50px] rounded-[13px] text-[12px] ",
+            "w-full justify-start text-left font-normal h-[50px] rounded-[13px] text-[12px]",
             !date && "text-muted-foreground",
             buttonClassName
           )}
@@ -56,6 +72,8 @@ export const DatePicker = ({
           selected={date}
           onSelect={handleDateSelect}
           initialFocus
+          // Pass the minDate to the Calendar component to disable dates before it
+          disabled={(day) => minDate && new Date(day) < new Date(minDate)}
         />
       </PopoverContent>
     </Popover>

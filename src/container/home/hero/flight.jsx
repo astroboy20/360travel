@@ -22,6 +22,10 @@ const Flight = () => {
     setWay(e.target.value);
   };
 
+  // const handleSubmit= ()=>{
+
+  // }
+
   return (
     <main className="flex flex-col gap-3">
       <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center mb-4 gap-5">

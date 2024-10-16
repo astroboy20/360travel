@@ -72,7 +72,7 @@ const hotelBrands = [
   { name: 'Accor', logo: '🏨' },
 ]
 
-export default function HotelSearchResults() {
+const  HotelsList=()=> {
   const [priceRange, setPriceRange] = useState([200, 1000])
   const [selectedRatings, setSelectedRatings] = useState([])
   const [selectedBrands, setSelectedBrands] = useState([])
@@ -245,3 +245,5 @@ export default function HotelSearchResults() {
     </div>
   )
 }
+
+export {HotelsList}
