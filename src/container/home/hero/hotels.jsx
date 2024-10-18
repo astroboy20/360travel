@@ -35,6 +35,7 @@ const Hotels = () => {
   const [show, setShow] = useState(false);
   const [checkinDate, setCheckinDate] = useState(null);
   const [checkoutDate, setCheckoutDate] = useState(null);
+  const [childAges, setChildAges] = useState(Array(childrenCount).fill(""));
 
   // UseEffect to fetch cities based on the query
   useEffect(() => {
@@ -75,11 +76,21 @@ const Hotels = () => {
   };
 
   const handlePrev_Children = () => {
-    setChildrenCount((prev) => (prev > 0 ? prev - 1 : 0));
+    setChildrenCount((prev) => {
+      const newCount = prev > 0 ? prev - 1 : 0;
+      setChildAges((ages) => ages.slice(0, newCount)); // Adjust childAges array when decreasing children count
+      return newCount;
+    });
   };
+
   const handleNext_Children = () => {
-    setChildrenCount((prev) => prev + 1);
+    setChildrenCount((prev) => {
+      const newCount = prev + 1;
+      setChildAges((ages) => [...ages, ""]); // Add an empty string for new child age when increasing children count
+      return newCount;
+    });
   };
+  
 
   const handleShow = () => {
     setShow(!show);
@@ -102,13 +113,30 @@ const Hotels = () => {
     setCheckoutDate(date);
   };
 
+  const handleChildAgeChange = (index, age) => {
+    setChildAges((prevAges) => {
+      const newAges = [...prevAges]; // Create a new array to avoid mutating state directly
+      newAges[index] = age; // Set the age at the given index
+      return newAges; // Return the updated array
+    });
+  };
+  
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const filteredChildAges = childAges.filter(
+      (age) => age !== "" && age !== undefined
+    );
+
+    console.log("Filtered Child Ages:", filteredChildAges);
+    
     setLoading(true);
     const formData = {
       selectedCity,
       travellerCount,
       roomCount,
+      childAges: filteredChildAges,
       childrenCount,
       checkinDate,
       checkoutDate,
@@ -118,14 +146,20 @@ const Hotels = () => {
       localStorage.setItem("formData", JSON.stringify(formData));
     }
 
-    if (!id || !checkinDate || !checkoutDate) {
+    if (
+      !id ||
+      !checkinDate ||
+      !checkoutDate ||
+      filteredChildAges.length !== childrenCount
+    ) {
       toast({
         title: "Error!",
-        description: "Please select a city, check-in date, and check-out date.",
+        description: "Please fill in all fields including child ages.",
         status: "error",
         duration: 3000,
         isClosable: true,
       });
+      setLoading(false);
       return;
     }
 
@@ -137,12 +171,15 @@ const Hotels = () => {
         duration: 3000,
         isClosable: true,
       });
+      setLoading(false);
       return;
     }
 
     axios
       .get(
-        `https://360.futamart.com/hotels?id=${id}&checkinDate=${checkinDate}&checkoutDate=${checkoutDate}`
+        `https://360.futamart.com/hotels?id=${id}&checkinDate=${checkinDate}&checkoutDate=${checkoutDate}&room=${roomCount}&adult=${travellerCount}&childAges=${filteredChildAges.join(
+          ","
+        )}`
       )
       .then((response) => {
         setLoading(false);
@@ -156,6 +193,7 @@ const Hotels = () => {
         console.log(error);
       });
   };
+
   return (
     <div>
       <div className="flex flex-col gap-4">
@@ -250,7 +288,12 @@ const Hotels = () => {
                       <div className="grid grid-cols-2 gap-3">
                         {Array.from({ length: childrenCount }).map(
                           (_, index) => (
-                            <Select key={index}>
+                            <Select
+                              key={index}
+                              onValueChange={(value) =>
+                                handleChildAgeChange(index, value)
+                              }
+                            >
                               <SelectTrigger className="w-full">
                                 <SelectValue
                                   placeholder={`Age of child ${index + 1}`}
@@ -258,7 +301,7 @@ const Hotels = () => {
                               </SelectTrigger>
                               <SelectContent>
                                 {[...Array(17).keys()].map((age) => (
-                                  <SelectItem key={age} value={age.toString()}>
+                                  <SelectItem key={age} value={age}>
                                     {age}
                                   </SelectItem>
                                 ))}
@@ -269,7 +312,7 @@ const Hotels = () => {
                       </div>
                     </div>
                   )}
-                  <div className="flex-flex-col gap-2 p-2">
+                  {/* <div className="flex-flex-col gap-2 p-2">
                     <p className="p-2 font-bold">Nationality</p>
                     <Select>
                       <SelectTrigger className="w-full">
@@ -283,7 +326,7 @@ const Hotels = () => {
                         ))}
                       </SelectContent>
                     </Select>
-                  </div>
+                  </div> */}
                 </div>
               )}
             </div>
@@ -319,7 +362,7 @@ const Hotels = () => {
               onClick={handleSubmit}
             >
               {loading ? (
-                <ClipLoader color="#fff"/>
+                <ClipLoader color="#fff" />
               ) : (
                 <div className="flex items-center gap-2">
                   {" "}
