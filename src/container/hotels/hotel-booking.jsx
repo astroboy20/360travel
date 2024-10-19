@@ -14,9 +14,12 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import Image from "next/image";
+import Link from "next/link";
 
 // Assuming the JSON data is stored in a variable called hotelData
-const hotelData = JSON.parse(localStorage.getItem("hotel-response") || "[]");
+const hotelData =
+  typeof window !== "undefined" &&
+  JSON.parse(localStorage.getItem("hotel-response") || "[]");
 
 const HotelsList = () => {
   const [priceRange, setPriceRange] = useState([0, 1000]);
@@ -39,7 +42,7 @@ const HotelsList = () => {
   // Filter hotels based on selected criteria
   const filteredHotels = hotelData.filter(
     (hotel) =>
-      (selectedRatings.length === 0 || selectedRatings.includes(hotel.rating))
+      selectedRatings.length === 0 || selectedRatings.includes(hotel.rating)
   );
 
   const totalPages = Math.ceil(filteredHotels.length / itemsPerPage);
@@ -48,12 +51,12 @@ const HotelsList = () => {
     currentPage * itemsPerPage
   );
 
-  const formartUrl =(url)=>{
-    if(url.startWith==="//"){
-        return `https:${url}`
+  const formartUrl = (url) => {
+    if (url.startsWith("//")) {
+      return `https:${url}`;
     }
-    return url
-  }
+    return url;
+  };
 
   return (
     <div className="container p-4 lg:p-10">
@@ -80,18 +83,18 @@ const HotelsList = () => {
             ))}
           </div>
 
-          <h2 className="text-lg font-semibold mt-6 mb-4">Price Range</h2>
-          <Slider
+          {/* <h2 className="text-lg font-semibold mt-6 mb-4">Price Range</h2> */}
+          {/* <Slider
             defaultValue={priceRange}
             max={1000}
             min={0}
             step={10}
             onValueChange={handlePriceRangeChange}
-          />
-          <div className="flex justify-between mt-2">
+          /> */}
+          {/* <div className="flex justify-between mt-2">
             <span>${priceRange[0]}</span>
             <span>${priceRange[1]}</span>
-          </div>
+          </div> */}
         </aside>
 
         <main className="w-full lg:w-3/4">
@@ -121,11 +124,17 @@ const HotelsList = () => {
                     />
                   )}
                   <div>
-                    <h3 className="font-semibold">{hotel.name}</h3>
-                    <p className="text-sm text-gray-500">{hotel.address.city}, {hotel.address.country}</p>
+                    <Link
+                      href={`/hotel-booking/${hotel.propertyId}`}
+                      className="font-semibold"
+                    >
+                      {hotel.name}
+                    </Link>
+                    <p className="text-sm text-gray-500">
+                      {hotel.address.city}, {hotel.address.country}
+                    </p>
                   </div>
                 </div>
-                
               </div>
               <div className="flex flex-col md:flex-row justify-between items-center mb-4">
                 <div className="text-center md:text-left mb-2 md:mb-0">
@@ -196,4 +205,4 @@ const HotelsList = () => {
   );
 };
 
-export  {HotelsList};
+export { HotelsList };

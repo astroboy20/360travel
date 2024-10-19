@@ -53,7 +53,7 @@ const HotelDetailView = ({ id }) => {
   const { data:details } = useFetchItems({
     url: `https://360.futamart.com/hotels/details?propertyId=${id}`,
   });
-  console.log(details?.data);
+  console.log(details);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const nextImage = () => {
