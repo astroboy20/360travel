@@ -34,19 +34,19 @@ const HotelsList = () => {
   const handleRatingChange = (rating) => {
     setSelectedRatings((prev) =>
       prev.includes(rating)
-        ? prev.filter((r) => r !== rating)
+        ? prev?.filter((r) => r !== rating)
         : [...prev, rating]
     );
   };
 
   // Filter hotels based on selected criteria
-  const filteredHotels = hotelData.filter(
+  const filteredHotels = hotelData?.filter(
     (hotel) =>
-      selectedRatings.length === 0 || selectedRatings.includes(hotel.rating)
+      selectedRatings?.length === 0 || selectedRatings?.includes(hotel?.rating)
   );
 
-  const totalPages = Math.ceil(filteredHotels.length / itemsPerPage);
-  const paginatedHotels = filteredHotels.slice(
+  const totalPages = Math.ceil(filteredHotels?.length / itemsPerPage);
+  const paginatedHotels = filteredHotels?.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
@@ -101,7 +101,7 @@ const HotelsList = () => {
           <div className="bg-white p-4 rounded-lg shadow mb-4">
             <div className="flex flex-col sm:flex-row justify-between items-center">
               <h2 className="text-lg font-semibold mb-2 sm:mb-0">
-                {filteredHotels.length} hotels found
+                {filteredHotels?.length} hotels found
               </h2>
               <select className="border rounded p-2">
                 <option>Price (Low to high)</option>
