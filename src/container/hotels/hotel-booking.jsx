@@ -39,14 +39,16 @@ const HotelsList = () => {
     );
   };
 
-  // Filter hotels based on selected criteria
-  const filteredHotels = hotelData?.filter(
-    (hotel) =>
-      selectedRatings?.length === 0 || selectedRatings?.includes(hotel?.rating)
-  );
+  // Filter hotels based on selected criteria, ensuring hotelData is an array
+  const filteredHotels = Array.isArray(hotelData)
+    ? hotelData.filter(
+        (hotel) =>
+          selectedRatings?.length === 0 || selectedRatings?.includes(hotel?.rating)
+      )
+    : [];
 
-  const totalPages = Math.ceil(filteredHotels?.length / itemsPerPage);
-  const paginatedHotels = filteredHotels?.slice(
+  const totalPages = Math.ceil(filteredHotels.length / itemsPerPage);
+  const paginatedHotels = filteredHotels.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
@@ -82,26 +84,13 @@ const HotelsList = () => {
               </label>
             ))}
           </div>
-
-          {/* <h2 className="text-lg font-semibold mt-6 mb-4">Price Range</h2> */}
-          {/* <Slider
-            defaultValue={priceRange}
-            max={1000}
-            min={0}
-            step={10}
-            onValueChange={handlePriceRangeChange}
-          /> */}
-          {/* <div className="flex justify-between mt-2">
-            <span>${priceRange[0]}</span>
-            <span>${priceRange[1]}</span>
-          </div> */}
         </aside>
 
         <main className="w-full lg:w-3/4">
           <div className="bg-white p-4 rounded-lg shadow mb-4">
             <div className="flex flex-col sm:flex-row justify-between items-center">
               <h2 className="text-lg font-semibold mb-2 sm:mb-0">
-                {filteredHotels?.length} hotels found
+                {filteredHotels.length} hotels found
               </h2>
               <select className="border rounded p-2">
                 <option>Price (Low to high)</option>
