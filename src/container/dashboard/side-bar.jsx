@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button"
 const sidebarItems = [
   { icon: Compass, label: "Overview", href: "/dashboard" },
   { icon: History, label: "My Bookings", href: "/dashboard/bookings" },
-  { icon: Wallet, label: "Wallet & Payment", href: "/dashboard/wallet" },
+  { icon: Wallet, label: "Wallet & Payment", href: "/dashboard/payment" },
   { icon: Settings, label: "Account Settings", href: "/dashboard/settings" },
 ]
 

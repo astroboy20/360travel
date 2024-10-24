@@ -7,7 +7,7 @@ import { Dashboard } from "@/container/dashboard/dashbaord";
 export default function Page() {
   return (
     <main>
-      <Header />
+      {/* <Header /> */}
       <Bookings />
       {/* <Footer /> */}
     </main>

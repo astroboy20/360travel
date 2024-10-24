@@ -1,6 +1,6 @@
 import { ReactQueryClientProvider } from "@/provider/provider";
 import "./globals.css";
-import { Inter, Poppins } from "next/font/google";
+import { Inter, Poppins,B612 } from "next/font/google";
 import { ChakraProvider } from "@chakra-ui/react";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -12,6 +12,14 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
+const b612 = B612({
+  weight:["400","700"],
+  style:["normal","italic"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-b612",
+})
+
 export const metadata = {
   title: "GalaxyTravel",
   description:
@@ -21,7 +29,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={poppins.className}>
+      <body className={b612.className}>
         <ReactQueryClientProvider>
           <ChakraProvider toastOptions={{ defaultOptions: { position: 'top' } }}>{children}</ChakraProvider>
         </ReactQueryClientProvider>
