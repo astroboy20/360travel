@@ -50,36 +50,34 @@ const hotel = {
 };
 
 const HotelDetailView = ({ id }) => {
-  const { data:details } = useFetchItems({
+  const { data: details } = useFetchItems({
     url: `https://360.futamart.com/hotels/details?propertyId=${id}`,
   });
   console.log(details);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const nextImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % hotel.images.length);
-  };
-
-  const prevImage = () => {
-    setCurrentImageIndex(
-      (prevIndex) => (prevIndex - 1 + hotel.images.length) % hotel.images.length
-    );
+  const formartUrl = (url) => {
+    if (url.startsWith("//")) {
+      return `https:${url}`;
+    }
+    return url;
   };
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <h1 className="text-3xl font-bold mb-6 text-[#bf2180]">{hotel.name}</h1>
+      <h1 className="text-3xl font-bold mb-6 text-[#bf2180]">
+        {details?.name}
+      </h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div>
           <Carousel className="w-full max-w-xl mx-auto mb-8 lg:mb-0">
             <CarouselContent>
-              {hotel.images.map((image, index) => (
+              {details?.images?.map((image, index) => (
                 <CarouselItem key={index}>
                   <div className="relative aspect-[4/3]">
                     <Image
-                      src={image.url}
-                      alt={image.alt}
+                      src={formartUrl(image.url)}
+                      alt={image?.alt}
                       layout="fill"
                       objectFit="cover"
                       className="rounded-lg"
@@ -97,14 +95,15 @@ const HotelDetailView = ({ id }) => {
           <Card>
             <CardContent className="p-6">
               <h2 className="text-2xl font-semibold mb-4">Hotel Details</h2>
-              <p className="text-gray-600 mb-4">{hotel.description}</p>
+              <p className="text-gray-600 mb-4 line-clamp-5">
+                {details?.description}
+              </p>
               <div className="flex items-center mb-4">
                 <Star className="w-5 h-5 text-yellow-400 mr-1" />
-                <span className="font-semibold">{hotel.rating} / 5</span>
+                <span className="font-semibold">{details?.rating} / 5</span>
               </div>
               <p className="text-gray-600 mb-4">
-                {hotel.address.area}, {hotel.address.city},{" "}
-                {hotel.address.country}
+                {hotel.address.address1}, {details?.address?.country?.name}
               </p>
               <h3 className="text-xl font-semibold mb-2">Amenities</h3>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
