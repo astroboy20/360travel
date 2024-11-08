@@ -20,7 +20,7 @@ export default function Home() {
       <FAQ/>
       {/* <Promo /> */}
       <Testimonials />
-      <Blog />
+      {/* <Blog /> */}
       <Footer />
     </main>
   );

@@ -14,8 +14,7 @@ export function Header() {
   const navItems = [
     { href: "/hotels", label: "Hotels" },
     { href: "/flights", label: "Flights" },
-    { href: "/", label: "Tours" },
-    { href: "/", label: "Blog" },
+    // { href: "/", label: "Tours" },
     { href: "/about-us", label: "About" },
   ];
 
