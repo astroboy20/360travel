@@ -19,22 +19,39 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { useFetchItems } from "../hooks/useFetchItems";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { HotelBookingForm } from "./hotel-booking-form";
+import { ClipLoader } from "react-spinners";
 
 const hotel = {
-  amenities: ["Free Wi-Fi", "24/7 Room Service", "Fitness Center", "Restaurant", "Parking"],
+  amenities: [
+    "Free Wi-Fi",
+    "24/7 Room Service",
+    "Fitness Center",
+    "Restaurant",
+    "Parking",
+  ],
 };
 
 const HotelDetailView = ({ id }) => {
-  const { data: details } = useFetchItems({
+  const { data: details, isLoading } = useFetchItems({
     url: `https://360.futamart.com/hotels/details?propertyId=${id}`,
   });
 
   const formartUrl = (url) => (url.startsWith("//") ? `https:${url}` : url);
   const images = details?.images.slice(0, 5);
-
+  if (isLoading) {
+    return (
+      <div className="flex h-[50dvh] justify-center items-center">
+        <ClipLoader />
+      </div>
+    );
+  }
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <h1 className="text-3xl font-bold mb-6 text-[#bf2180]">{details?.name}</h1>
+    <div className="container mx-auto px-4 sm:px-6 lg:px-12 py-8">
+      <h1 className="text-3xl font-bold mb-6 text-[#bf2180]">
+        {details?.name}
+      </h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div>
@@ -64,7 +81,9 @@ const HotelDetailView = ({ id }) => {
           <Card>
             <CardContent className="p-6">
               <h2 className="text-2xl font-semibold mb-4">Hotel Details</h2>
-              <p className="text-gray-600 mb-4 line-clamp-5">{details?.description}</p>
+              <p className="text-gray-600 mb-4 line-clamp-5">
+                {details?.description}
+              </p>
               <div className="flex items-center mb-4">
                 <Star className="w-5 h-5 text-yellow-400 mr-1" />
                 <span className="font-semibold">{details?.rating} / 5</span>
@@ -76,10 +95,18 @@ const HotelDetailView = ({ id }) => {
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {hotel.amenities.map((amenity, index) => (
                   <li key={index} className="flex items-center">
-                    {amenity.includes("Wi-Fi") && <Wifi className="w-4 h-4 mr-2" />}
-                    {amenity.includes("Room Service") && <Coffee className="w-4 h-4 mr-2" />}
-                    {amenity.includes("Restaurant") && <Utensils className="w-4 h-4 mr-2" />}
-                    {amenity.includes("Parking") && <Car className="w-4 h-4 mr-2" />}
+                    {amenity.includes("Wi-Fi") && (
+                      <Wifi className="w-4 h-4 mr-2" />
+                    )}
+                    {amenity.includes("Room Service") && (
+                      <Coffee className="w-4 h-4 mr-2" />
+                    )}
+                    {amenity.includes("Restaurant") && (
+                      <Utensils className="w-4 h-4 mr-2" />
+                    )}
+                    {amenity.includes("Parking") && (
+                      <Car className="w-4 h-4 mr-2" />
+                    )}
                     <span>{amenity}</span>
                   </li>
                 ))}
@@ -90,7 +117,17 @@ const HotelDetailView = ({ id }) => {
       </div>
 
       <div className="mt-8 flex justify-center px-4 sm:px-0">
-        <Button className="bg-[#bf2180] hover:bg-[#a11c6d] text-white w-full sm:w-auto">Book Now</Button>
+        <Dialog>
+          <DialogTrigger>
+            {" "}
+            <Button className="bg-[#bf2180] hover:bg-[#a11c6d] text-white w-full sm:w-auto">
+              Book Now
+            </Button>
+          </DialogTrigger>
+          <DialogContent>
+            <HotelBookingForm />
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   );

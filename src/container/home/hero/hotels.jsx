@@ -312,21 +312,7 @@ const Hotels = () => {
                       </div>
                     </div>
                   )}
-                  {/* <div className="flex-flex-col gap-2 p-2">
-                    <p className="p-2 font-bold">Nationality</p>
-                    <Select>
-                      <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Select your country" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {countryList.map((country, index) => (
-                          <SelectItem key={index} value={country}>
-                            {country}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div> */}
+                
                 </div>
               )}
             </div>
