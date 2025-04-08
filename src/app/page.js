@@ -60,6 +60,9 @@ function HomePage() {
               Click here to join
             </a>
           </div>
+                <div>
+                To place a food order for DoorDash 50% off, please message @GalaxyServicesBot on Telegram. It is generally open 12PM to 11PM (EST) daily. <a href="https://t.me/GalaxyServicesBot">Click here</a>to place an order
+                <\div>
         </div>
       </div>
     </div>
