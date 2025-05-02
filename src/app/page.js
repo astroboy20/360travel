@@ -31,8 +31,8 @@ import './globals.css';
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen bg-[#0d1b2a] text-white flex justify-center items-center p-5">
-      <div className="bg-[#1b263b] p-8 rounded-xl shadow-lg text-center justify-center max-w-[600px] w-full">
+    <div className="min-h-screen bg-[#0d1b2a] text-white flex justify-center items-center p-5 text-center">
+      <div className="bg-[#1b263b] p-8 rounded-xl shadow-lg max-w-[600px] w-full">
         <h1 className="text-4xl font-bold mb-4">GalaxyServices</h1>
         <p className="text-lg mb-4 leading-relaxed">
           Helping you get the best deals on Flights, Hotels, and Car Rentals.
@@ -82,44 +82,44 @@ const HomePage = () => {
         
         <hr className="my-8 border-[#334155]" />
 
-        <h2 className="text-2xl font-bold mt-8 mb-4">Hotels</h2>
-        <p className="text-lg mb-4 leading-relaxed">To book a hotel, send us a screenshot that contains:</p>
-        <ul className="text-left max-w-[500px] mx-auto mb-6 pl-5 space-y-2">
-          <li>Property Name (must be a large chain like Hilton, Marriott, etc. — no small independent hotels)</li>
-          <li>Dates of stay (check-in and check-out)</li>
-          <li>Total cost (minimum $350 USD or $500 CAD)</li>
-          <li>You pay us 50% and we book the hotel</li>
-          <li>Hotel orders are delivered within 24 hours of your stay</li>
-          <li>You must be legally old enough to stay in a hotel in the city you're visiting</li>
-          <li>You must provide a CREDIT CARD to the hotel front desk for a damage deposit (usually $200–$500)</li>
+        <h2 className="text-2xl font-bold mt-8 mb-4">Hotel Booking</h2>
+        <p className="text-lg mb-4">Send us a screenshot that contains:</p>
+        <ul className="text-left max-w-[500px] mx-auto mb-6 pl-5">
+          <li className="mb-2">Property Name (must be a large chain like Hilton, Marriott, etc) no small independent hotels as they often create issues when trying to check in)</li>
+          <li className="mb-2">Dates of stay (check-in and check-out)</li>
+          <li className="mb-2">Total cost (minimum $350 USD or $500 CAD)</li>
+          <li className="mb-2 italic">You pay us 50% and we book the hotel</li>
+          <li className="mb-2 italic">Hotel orders are delivered within 24 hours of your stay</li>
+          <li className="mb-2 italic">You must be legally old enough to stay in a hotel in the city you're visiting</li>
+          <li className="mb-2 italic">You must provide a CREDIT CARD to the hotel front desk for a damage deposit (usually $200 - $500), they do not accept DEBIT cards</li>
         </ul>
         
         <hr className="my-8 border-[#334155]" />
 
-        <h2 className="text-2xl font-bold mt-8 mb-4">Flights</h2>
-        <p className="text-lg mb-4 leading-relaxed">To book a flight, send us a screenshot containing:</p>
-        <ul className="text-left max-w-[500px] mx-auto mb-6 pl-5 space-y-2">
-          <li>Departure Airport</li>
-          <li>Arrival Airport</li>
-          <li>Total cost (minimum $350 USD or $500 CAD)</li>
-          <li>You pay us 50% and we book the flight</li>
-          <li>Flight orders are delivered within 48 hours of departure</li>
+        <h2 className="text-2xl font-bold mt-8 mb-4">Flight Booking</h2>
+        <p className="text-lg mb-4">Send us a screenshot that contains:</p>
+        <ul className="text-left max-w-[500px] mx-auto mb-6 pl-5">
+          <li className="mb-2">Departure Airport</li>
+          <li className="mb-2">Arrival Airport</li>
+          <li className="mb-2">Total cost (minimum $350 USD or $500 CAD)</li>
+          <li className="mb-2">You pay us 50% and we book the flight</li>
+          <li className="mb-2">Flight orders are delivered within 48 hours of departure</li>
+          <li className="mb-2">We mainly do flights within Canada and USA, international flights are sometimes possible upon request. Send us a screenshot and we will let you know if your flight is something we can do or not.</li>
         </ul>
         
         <hr className="my-8 border-[#334155]" />
 
-        <h2 className="text-2xl font-bold mt-8 mb-4">Car Rentals</h2>
-        <p className="text-lg mb-4 leading-relaxed">
-          To book a car rental, send us a screenshot from <strong>BUDGET.com</strong> or <strong>AVIS.com</strong> containing:
-        </p>
-        <ul className="text-left max-w-[500px] mx-auto mb-6 pl-5 space-y-2">
-          <li>Pickup & Drop-off Location (Airports only)</li>
-          <li>Pickup and Drop-off Date & Time</li>
-          <li>Type of vehicle you want</li>
-          <li>Total cost</li>
-          <li>We recommend adding insurance online to avoid paying more at the counter</li>
-          <li>You must be legally old enough to drive and have a valid license</li>
-          <li>No refunds if you are unable to pick up the car due to age or license issues</li>
+        <h2 className="text-2xl font-bold mt-8 mb-4">Car Rentals Booking</h2>
+        <p className="text-lg mb-4">Send us a screenshot from BUDGET.COM or AVIS.com that contains:</p>
+        <ul className="text-left max-w-[500px] mx-auto mb-6 pl-5">
+          <li className="mb-2">Pickup & Drop-off Location (Airports only)</li>
+          <li className="mb-2">Pickup and Drop-off Date & Time</li>
+          <li className="mb-2">Type of vehicle you want</li>
+          <li className="mb-2">Total cost (minimum $350 USD or $500 CAD)</li>
+          <li className="mb-2">We recommend adding insurance online to avoid paying more at the counter. If you have personal car insurance that allows rentals, they will need to see those documents before giving you the car. Your credit card insurance will not apply as you are not booking this with your own credit card.</li>
+          <li className="mb-2">You must be legally old enough to drive and have a valid license</li>
+          <li className="mb-2">No refunds if you are unable to pick up the car due to age or license issues</li>
+          <li className="mb-2 italic">You must provide a CREDIT CARD to the rental counter for a damage deposit (usually $200 - $500), they do not accept DEBIT cards</li>
         </ul>
       </div>
     </div>
@@ -127,5 +127,4 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
 
