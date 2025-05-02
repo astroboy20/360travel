@@ -32,7 +32,7 @@ import './globals.css';
 const HomePage = () => {
   return (
     <div className="min-h-screen bg-[#0d1b2a] text-white flex justify-center items-center p-5">
-      <div className="bg-[#1b263b] p-8 rounded-xl shadow-lg max-w-[600px] w-full">
+      <div className="bg-[#1b263b] p-8 rounded-xl shadow-lg text-center justify-center max-w-[600px] w-full">
         <h1 className="text-4xl font-bold mb-4">GalaxyServices</h1>
         <p className="text-lg mb-4 leading-relaxed">
           Helping you get the best deals on Flights, Hotels, and Car Rentals.
